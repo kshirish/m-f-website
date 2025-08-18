@@ -2,10 +2,379 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1221" />
+    <meta
+      name="description"
+      content="My Choice Mortgage and Finance — Mortgage, finance and loan broker in Sydney. We help with first home buyers, car loans, low doc loans, SMSF, construction, debt consolidation, refinancing and property investment."
+    />
+    <meta property="og:title" content="My Choice Mortgage & Finance" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Trusted mortgage and finance broker in Australia. First home to investment — make your next move with confidence."
+    />
+    <meta property="og:url" content="https://mychoicemortgage.com.au/" />
+    <title>My Choice Mortgage & Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FinancialService",
+        "name": "My Choice Mortgage and Finance",
+        "url": "https://mychoicemortgage.com.au/",
+        "email": "info@mychoicemortgage.com.au",
+        "telephone": "+61 402 742 493",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "NSW",
+          "postalCode": "2749",
+          "addressCountry": "AU"
+        },
+        "areaServed": [
+          "Sydney",
+          "Perth",
+          "Melbourne",
+          "Penrith",
+          "Parramatta",
+          "Adelaide"
+        ],
+        "sameAs": []
+      }
+    </script>
   </head>
   <body>
-    <h1>Hello world!</h1>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="container header-inner">
+        <a
+          class="brand"
+          href="#top"
+          aria-label="My Choice Mortgage and Finance home"
+        >
+          <svg
+            class="brand-mark"
+            viewBox="0 0 64 64"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#5eead4" />
+                <stop offset="100%" stop-color="#60a5fa" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="30" fill="url(#g1)" opacity="0.15" />
+            <path
+              d="M10 36 L24 22 L32 30 L48 14 L54 20 L32 42 L24 34 L16 42 Z"
+              fill="url(#g1)"
+            />
+          </svg>
+          <span class="brand-text"
+            >My Choice <strong>Mortgage</strong> &
+            <strong>Finance</strong></span
+          >
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <button
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="nav-menu"
+          >
+            Menu
+          </button>
+          <ul id="nav-menu" class="nav-list">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#why">Why us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <a class="cta-btn" href="#contact">Free consult</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-label="Hero">
+        <div class="gradient-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <h1>Your finance, <span class="accent">your choice</span>.</h1>
+          <p class="lead">
+            Sydney-based mortgage, finance and loan brokers. From first homes to
+            investments, get tailored lending with clarity and confidence.
+          </p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#contact">Get a free consultation</a>
+            <a
+              class="btn ghost"
+              href="tel:+61402742493"
+              aria-label="Call 0402 742 493"
+              >Call 0402 742 493</a
+            >
+          </div>
+          <div class="stats" role="list" aria-label="Highlights">
+            <div class="stat" role="listitem">
+              <span class="num">30+</span><span class="label">Lenders</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="num">Fast</span
+              ><span class="label">Pre‑approvals</span>
+            </div>
+            <div class="stat" role="listitem">
+              <span class="num">1:1</span
+              ><span class="label">Personal advice</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="services" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>What we do</h2>
+            <p>Flexible lending solutions for every stage.</p>
+          </header>
+
+          <div class="grid cards">
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🏠</div>
+              <h3>First Home Buyers</h3>
+              <p>
+                Navigate grants, deposits and lenders with a guide by your side.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🚗</div>
+              <h3>Car Loan</h3>
+              <p>
+                Competitive rates and quick turnaround for your next vehicle.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">📄</div>
+              <h3>Low Doc Loans</h3>
+              <p>
+                ABN, contractors and self‑employed options that work for you.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🏦</div>
+              <h3>SMSF</h3>
+              <p>Borrowing inside your Self‑Managed Super Fund, made simple.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🧱</div>
+              <h3>Construction Loans</h3>
+              <p>
+                From land to lock‑up, manage progress payments with confidence.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🧮</div>
+              <h3>Debt Consolidation</h3>
+              <p>Roll debts into one manageable repayment and reduce stress.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🔁</div>
+              <h3>Refinancing</h3>
+              <p>Lower rates, better features and cashbacks where available.</p>
+            </article>
+            <article class="card reveal">
+              <div class="icon" aria-hidden="true">🏘️</div>
+              <h3>Property Investment</h3>
+              <p>Structure and strategy for building a resilient portfolio.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="areas" class="section alt">
+        <div class="container">
+          <header class="section-header">
+            <h2>Areas we serve</h2>
+            <p>Helping clients across Australia.</p>
+          </header>
+
+          <ul class="chips" role="list">
+            <li class="chip reveal">Sydney</li>
+            <li class="chip reveal">Perth</li>
+            <li class="chip reveal">Melbourne</li>
+            <li class="chip reveal">Penrith</li>
+            <li class="chip reveal">Parramatta</li>
+            <li class="chip reveal">Adelaide</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="why" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2>Why choose us</h2>
+            <p>Clarity, speed and choice without the paperwork pain.</p>
+          </header>
+          <div class="grid features">
+            <div class="feature reveal">
+              <h3>Personal, end‑to‑end</h3>
+              <p>
+                From pre‑approval to settlement, we keep you informed and in
+                control.
+              </p>
+            </div>
+            <div class="feature reveal">
+              <h3>More lender options</h3>
+              <p>
+                We compare policies and products across a broad panel to fit
+                your goals.
+              </p>
+            </div>
+            <div class="feature reveal">
+              <h3>Fast turnarounds</h3>
+              <p>
+                Smart workflow and digital docs mean less waiting and fewer
+                surprises.
+              </p>
+            </div>
+            <div class="feature reveal">
+              <h3>No cost to you</h3>
+              <p>
+                Our service is typically paid by the lender. We’re on your side.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section alt">
+        <div class="container contact">
+          <header class="section-header">
+            <h2>Let’s talk</h2>
+            <p>
+              NSW 2749, Australia · 0402 742 493 · info@mychoicemortgage.com.au
+            </p>
+          </header>
+
+          <div class="contact-grid">
+            <div class="panel">
+              <h3>Contact details</h3>
+              <ul class="contact-list">
+                <li>
+                  <span class="label">Address</span>
+                  <span>NSW 2749, AUSTRALIA</span>
+                </li>
+                <li>
+                  <span class="label">Phone</span>
+                  <a href="tel:+61402742493">0402 742 493</a>
+                </li>
+                <li>
+                  <span class="label">Email</span>
+                  <a href="mailto:info@mychoicemortgage.com.au"
+                    >info@mychoicemortgage.com.au</a
+                  >
+                </li>
+              </ul>
+              <div class="contact-cta">
+                <a class="btn primary" href="tel:+61402742493">Call now</a>
+                <a
+                  class="btn ghost"
+                  href="mailto:info@mychoicemortgage.com.au?subject=Enquiry%20-%20My%20Choice%20Mortgage%20and%20Finance"
+                  >Email us</a
+                >
+              </div>
+            </div>
+
+            <form
+              class="panel form"
+              id="enquiry-form"
+              aria-label="Enquiry form"
+            >
+              <div class="form-row">
+                <label for="name">Name</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Jane Doe"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <label for="phone">Phone</label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  placeholder="0402 123 456"
+                />
+              </div>
+              <div class="form-row">
+                <label for="service">Service</label>
+                <select id="service" name="service">
+                  <option value="First Home Buyers">First Home Buyers</option>
+                  <option value="Car Loan">Car Loan</option>
+                  <option value="Low Doc Loans">Low Doc Loans</option>
+                  <option value="SMSF">SMSF</option>
+                  <option value="Construction Loans">Construction Loans</option>
+                  <option value="Debt Consolidation">Debt Consolidation</option>
+                  <option value="Refinancing">Refinancing</option>
+                  <option value="Property Investment">
+                    Property Investment
+                  </option>
+                </select>
+              </div>
+              <div class="form-row">
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Tell us a little about your goals…"
+                ></textarea>
+              </div>
+              <div class="form-actions">
+                <button type="submit" class="btn primary">Send enquiry</button>
+                <p class="fineprint">
+                  By submitting, you agree to be contacted about your enquiry.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          © <span id="year"></span> My Choice Mortgage and Finance. All rights
+          reserved.
+        </p>
+        <nav aria-label="Footer">
+          <a href="#services">Services</a>
+          <a href="#areas">Areas</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="./script.js" defer></script>
   </body>
 </html>
