@@ -4,7 +4,10 @@ import { ArrowRight, Shield, Clock, Users, Calculator } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-16"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <ImageWithFallback
@@ -22,34 +25,42 @@ export default function Hero() {
               🏠 Sydney's Trusted Mortgage Experts
             </span>
           </div>
-          
+
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
             Your Dream Home
             <span className="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Starts Here
             </span>
           </h1>
-          
+
           <p className="text-xl text-gray-200 mb-8 leading-relaxed">
-            Expert mortgage, finance, and loan solutions across Sydney and beyond. 
-            We make your property dreams achievable with personalized service and competitive rates.
+            Expert mortgage, finance, and loan solutions across Sydney and
+            beyond. We make your property dreams achievable with personalized
+            service and competitive rates.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
+            >
               Get Free Quote
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4"
-              onClick={() => window.location.hash = 'calculator'}
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-gray-900 hover:bg-gray-100 px-8 py-4"
+              onClick={() => (window.location.hash = "calculator")}
             >
               <Calculator className="mr-2 w-5 h-5" />
               Loan Calculator
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4">
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-gray-900 hover:bg-gray-100 px-8 py-4"
+            >
               Call Now: 1300 MY CHOICE
             </Button>
           </div>

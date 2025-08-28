@@ -1,19 +1,39 @@
 import { useState, useEffect } from "react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../ui/select";
 import { Slider } from "../ui/slider";
 import { Badge } from "../ui/badge";
-import { Calculator, DollarSign, TrendingUp, Clock, Phone, ArrowRight, Info } from "lucide-react";
+import {
+  Calculator,
+  DollarSign,
+  TrendingUp,
+  Clock,
+  Phone,
+  ArrowRight,
+  Info,
+} from "lucide-react";
 
 export default function CalculatorPage() {
   const [loanAmount, setLoanAmount] = useState(600000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
   const [repaymentFrequency, setRepaymentFrequency] = useState("monthly");
-  
+
   const [monthlyPayment, setMonthlyPayment] = useState(0);
   const [totalInterest, setTotalInterest] = useState(0);
   const [totalPayments, setTotalPayments] = useState(0);
@@ -24,15 +44,16 @@ export default function CalculatorPage() {
       const principal = loanAmount;
       const monthlyRate = interestRate / 100 / 12;
       const numberOfPayments = loanTerm * 12;
-      
+
       // Monthly payment calculation using PMT formula
-      const monthlyPaymentCalc = principal * 
-        (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+      const monthlyPaymentCalc =
+        (principal *
+          (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))) /
         (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-      
+
       const totalPaymentsCalc = monthlyPaymentCalc * numberOfPayments;
       const totalInterestCalc = totalPaymentsCalc - principal;
-      
+
       setMonthlyPayment(monthlyPaymentCalc);
       setTotalPayments(totalPaymentsCalc);
       setTotalInterest(totalInterestCalc);
@@ -40,18 +61,18 @@ export default function CalculatorPage() {
   }, [loanAmount, interestRate, loanTerm]);
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-AU', {
-      style: 'currency',
-      currency: 'AUD',
+    return new Intl.NumberFormat("en-AU", {
+      style: "currency",
+      currency: "AUD",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(amount);
   };
 
   const formatCurrencyDetailed = (amount: number) => {
-    return new Intl.NumberFormat('en-AU', {
-      style: 'currency',
-      currency: 'AUD',
+    return new Intl.NumberFormat("en-AU", {
+      style: "currency",
+      currency: "AUD",
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(amount);
@@ -82,11 +103,11 @@ export default function CalculatorPage() {
   };
 
   const scrollToContact = () => {
-    window.location.hash = 'home';
+    window.location.hash = "home";
     setTimeout(() => {
-      const contactSection = document.getElementById('contact');
+      const contactSection = document.getElementById("contact");
       if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth' });
+        contactSection.scrollIntoView({ behavior: "smooth" });
       }
     }, 100);
   };
@@ -106,8 +127,8 @@ export default function CalculatorPage() {
               Loan Calculator
             </h1>
             <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Calculate your loan repayments instantly. Get accurate estimates for your home loan, 
-              personal loan, or any other financing needs.
+              Calculate your loan repayments instantly. Get accurate estimates
+              for your home loan, personal loan, or any other financing needs.
             </p>
           </div>
         </div>
@@ -131,7 +152,10 @@ export default function CalculatorPage() {
               <CardContent className="space-y-6">
                 {/* Loan Amount */}
                 <div className="space-y-3">
-                  <Label htmlFor="loanAmount" className="flex items-center space-x-2">
+                  <Label
+                    htmlFor="loanAmount"
+                    className="flex items-center space-x-2"
+                  >
                     <DollarSign className="w-4 h-4" />
                     <span>Loan Amount</span>
                   </Label>
@@ -162,7 +186,10 @@ export default function CalculatorPage() {
 
                 {/* Interest Rate */}
                 <div className="space-y-3">
-                  <Label htmlFor="interestRate" className="flex items-center space-x-2">
+                  <Label
+                    htmlFor="interestRate"
+                    className="flex items-center space-x-2"
+                  >
                     <TrendingUp className="w-4 h-4" />
                     <span>Interest Rate (% p.a.)</span>
                   </Label>
@@ -188,7 +215,10 @@ export default function CalculatorPage() {
                     <Clock className="w-4 h-4" />
                     <span>Loan Term (years)</span>
                   </Label>
-                  <Select value={loanTerm.toString()} onValueChange={(value) => setLoanTerm(Number(value))}>
+                  <Select
+                    value={loanTerm.toString()}
+                    onValueChange={(value) => setLoanTerm(Number(value))}
+                  >
                     <SelectTrigger className="text-lg">
                       <SelectValue />
                     </SelectTrigger>
@@ -207,7 +237,10 @@ export default function CalculatorPage() {
                 {/* Repayment Frequency */}
                 <div className="space-y-3">
                   <Label>Repayment Frequency</Label>
-                  <Select value={repaymentFrequency} onValueChange={setRepaymentFrequency}>
+                  <Select
+                    value={repaymentFrequency}
+                    onValueChange={setRepaymentFrequency}
+                  >
                     <SelectTrigger className="text-lg">
                       <SelectValue />
                     </SelectTrigger>
@@ -235,7 +268,9 @@ export default function CalculatorPage() {
                   <div className="text-4xl font-bold text-blue-600 mb-2">
                     {formatCurrencyDetailed(getRepaymentAmount())}
                   </div>
-                  <div className="text-gray-600 capitalize">{getFrequencyText()}</div>
+                  <div className="text-gray-600 capitalize">
+                    {getFrequencyText()}
+                  </div>
                 </div>
 
                 {/* Summary Cards */}
@@ -260,7 +295,9 @@ export default function CalculatorPage() {
                   <div className="space-y-3 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Loan Amount:</span>
-                      <span className="font-medium">{formatCurrency(loanAmount)}</span>
+                      <span className="font-medium">
+                        {formatCurrency(loanAmount)}
+                      </span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Interest Rate:</span>
@@ -272,14 +309,16 @@ export default function CalculatorPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">Frequency:</span>
-                      <span className="font-medium capitalize">{repaymentFrequency}</span>
+                      <span className="font-medium capitalize">
+                        {repaymentFrequency}
+                      </span>
                     </div>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="space-y-3">
-                  <Button 
+                  <Button
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                     size="lg"
                     onClick={scrollToContact}
@@ -287,8 +326,8 @@ export default function CalculatorPage() {
                     Apply for This Loan
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     className="w-full text-blue-600 hover:bg-blue-50"
                     onClick={scrollToContact}
                   >
@@ -307,9 +346,12 @@ export default function CalculatorPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Understanding Your Loan</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                Understanding Your Loan
+              </h2>
               <p className="text-xl text-gray-600">
-                Use our calculator to make informed decisions about your borrowing
+                Use our calculator to make informed decisions about your
+                borrowing
               </p>
             </div>
 
@@ -321,7 +363,8 @@ export default function CalculatorPage() {
                   </div>
                   <h3 className="font-semibold mb-2">Accurate Estimates</h3>
                   <p className="text-sm text-gray-600">
-                    Get precise repayment calculations based on current market rates
+                    Get precise repayment calculations based on current market
+                    rates
                   </p>
                 </CardContent>
               </Card>
@@ -333,7 +376,8 @@ export default function CalculatorPage() {
                   </div>
                   <h3 className="font-semibold mb-2">Compare Options</h3>
                   <p className="text-sm text-gray-600">
-                    Try different loan amounts and terms to find what works for you
+                    Try different loan amounts and terms to find what works for
+                    you
                   </p>
                 </CardContent>
               </Card>
@@ -354,10 +398,19 @@ export default function CalculatorPage() {
             <div className="mt-12 p-6 bg-gray-50 rounded-lg">
               <h3 className="font-semibold mb-3">Important Information</h3>
               <ul className="text-sm text-gray-600 space-y-2">
-                <li>• This calculator provides estimates only and should not be relied upon for financial decisions</li>
-                <li>• Actual loan terms and rates may vary based on your credit history and financial situation</li>
+                <li>
+                  • This calculator provides estimates only and should not be
+                  relied upon for financial decisions
+                </li>
+                <li>
+                  • Actual loan terms and rates may vary based on your credit
+                  history and financial situation
+                </li>
                 <li>• Additional fees and charges may apply to your loan</li>
-                <li>• Contact us for a detailed loan assessment and personalized quote</li>
+                <li>
+                  • Contact us for a detailed loan assessment and personalized
+                  quote
+                </li>
               </ul>
             </div>
           </div>
@@ -369,20 +422,21 @@ export default function CalculatorPage() {
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
           <p className="text-xl mb-8 text-blue-100">
-            Our loan specialists are here to help you secure the best rates and terms for your needs.
+            Our loan specialists are here to help you secure the best rates and
+            terms for your needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-white text-blue-700 hover:bg-gray-100 px-8"
               onClick={scrollToContact}
             >
               Get Pre-Approved Now
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white/10 px-8"
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-gray-900 hover:bg-white/10 px-8"
               onClick={scrollToContact}
             >
               <Phone className="mr-2 w-5 h-5" />

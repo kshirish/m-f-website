@@ -1,38 +1,89 @@
 import { Button } from "../ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
 import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { Badge } from "../ui/badge";
-import { CheckCircle, Home, Calculator, FileText, Users, ArrowRight, Phone, Star } from "lucide-react";
+import {
+  CheckCircle,
+  Home,
+  Calculator,
+  FileText,
+  Users,
+  ArrowRight,
+  Phone,
+  Star,
+} from "lucide-react";
 
 export default function HomeLoansPage() {
   const loanTypes = [
     {
       title: "First Home Buyer Loans",
       description: "Special rates and government grants for first-time buyers",
-      features: ["Low deposit options", "First Home Owner Grant", "Stamp duty concessions", "No LMI options available"]
+      features: [
+        "Low deposit options",
+        "First Home Owner Grant",
+        "Stamp duty concessions",
+        "No LMI options available",
+      ],
     },
     {
       title: "Investment Property Loans",
       description: "Competitive rates for your investment portfolio",
-      features: ["Interest-only options", "Tax benefits", "Portfolio lending", "Rental income assessment"]
+      features: [
+        "Interest-only options",
+        "Tax benefits",
+        "Portfolio lending",
+        "Rental income assessment",
+      ],
     },
     {
       title: "Refinancing",
       description: "Switch to a better rate and save thousands",
-      features: ["Rate comparison", "Cashback offers", "Debt consolidation", "Free property valuation"]
+      features: [
+        "Rate comparison",
+        "Cashback offers",
+        "Debt consolidation",
+        "Free property valuation",
+      ],
     },
     {
       title: "Construction Loans",
       description: "Finance your dream home from the ground up",
-      features: ["Progress payments", "Land + construction", "Offset account", "Convert to standard loan"]
-    }
+      features: [
+        "Progress payments",
+        "Land + construction",
+        "Offset account",
+        "Convert to standard loan",
+      ],
+    },
   ];
 
   const benefits = [
-    { icon: Calculator, title: "Competitive Rates", description: "Access to over 50+ lenders for the best rates" },
-    { icon: FileText, title: "Fast Approval", description: "Pre-approvals in as little as 24 hours" },
-    { icon: Users, title: "Expert Advice", description: "Dedicated loan specialists guide you through" },
-    { icon: Star, title: "5-Star Service", description: "Rated 4.9/5 stars by over 1000+ customers" }
+    {
+      icon: Calculator,
+      title: "Competitive Rates",
+      description: "Access to over 50+ lenders for the best rates",
+    },
+    {
+      icon: FileText,
+      title: "Fast Approval",
+      description: "Pre-approvals in as little as 24 hours",
+    },
+    {
+      icon: Users,
+      title: "Expert Advice",
+      description: "Dedicated loan specialists guide you through",
+    },
+    {
+      icon: Star,
+      title: "5-Star Service",
+      description: "Rated 4.9/5 stars by over 1000+ customers",
+    },
   ];
 
   return (
@@ -51,19 +102,20 @@ export default function HomeLoansPage() {
               <span className="block text-yellow-300">Awaits</span>
             </h1>
             <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              From first home buyers to seasoned investors, we offer competitive home loan solutions 
-              with rates starting from 5.99%*. Get pre-approved in 24 hours.
+              From first home buyers to seasoned investors, we offer competitive
+              home loan solutions with rates starting from 5.99%*. Get
+              pre-approved in 24 hours.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="bg-white text-blue-700 hover:bg-gray-100 px-8"
                 onClick={() => {
-                  window.location.hash = 'home';
+                  window.location.hash = "home";
                   setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
+                    const contactSection = document.getElementById("contact");
                     if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                      contactSection.scrollIntoView({ behavior: "smooth" });
                     }
                   }, 100);
                 }}
@@ -71,16 +123,16 @@ export default function HomeLoansPage() {
                 Get Pre-Approved Now
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-white text-white hover:bg-white/10 px-8"
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-gray-900 hover:bg-white/10 px-8"
                 onClick={() => {
-                  window.location.hash = 'home';
+                  window.location.hash = "home";
                   setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
+                    const contactSection = document.getElementById("contact");
                     if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
+                      contactSection.scrollIntoView({ behavior: "smooth" });
                     }
                   }, 100);
                 }}
@@ -97,10 +149,12 @@ export default function HomeLoansPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Home Loan Options</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Home Loan Options
+            </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Whether you're buying your first home or expanding your investment portfolio, 
-              we have the right loan solution for you.
+              Whether you're buying your first home or expanding your investment
+              portfolio, we have the right loan solution for you.
             </p>
           </div>
 
@@ -112,7 +166,9 @@ export default function HomeLoansPage() {
                     <Home className="w-5 h-5 text-blue-600" />
                     <span>{loan.title}</span>
                   </CardTitle>
-                  <CardDescription className="text-base">{loan.description}</CardDescription>
+                  <CardDescription className="text-base">
+                    {loan.description}
+                  </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
@@ -123,15 +179,16 @@ export default function HomeLoansPage() {
                       </li>
                     ))}
                   </ul>
-                  <Button 
-                    className="w-full mt-6" 
+                  <Button
+                    className="w-full mt-6"
                     variant="outline"
                     onClick={() => {
-                      window.location.hash = 'home';
+                      window.location.hash = "home";
                       setTimeout(() => {
-                        const contactSection = document.getElementById('contact');
+                        const contactSection =
+                          document.getElementById("contact");
                         if (contactSection) {
-                          contactSection.scrollIntoView({ behavior: 'smooth' });
+                          contactSection.scrollIntoView({ behavior: "smooth" });
                         }
                       }, 100);
                     }}
@@ -149,20 +206,27 @@ export default function HomeLoansPage() {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Our Home Loans?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Why Choose Our Home Loans?
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => {
               const IconComponent = benefit.icon;
               return (
-                <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+                <Card
+                  key={index}
+                  className="text-center p-6 hover:shadow-lg transition-shadow"
+                >
                   <CardContent className="p-0">
                     <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="w-6 h-6 text-blue-600" />
                     </div>
                     <h3 className="font-semibold mb-2">{benefit.title}</h3>
-                    <p className="text-sm text-gray-600">{benefit.description}</p>
+                    <p className="text-sm text-gray-600">
+                      {benefit.description}
+                    </p>
                   </CardContent>
                 </Card>
               );
@@ -175,16 +239,40 @@ export default function HomeLoansPage() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Simple 4-Step Process</h2>
-            <p className="text-xl text-gray-600">Get approved and move into your dream home faster</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Simple 4-Step Process
+            </h2>
+            <p className="text-xl text-gray-600">
+              Get approved and move into your dream home faster
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: "1", title: "Apply Online", description: "Complete our quick online application in 10 minutes" },
-              { step: "2", title: "Documentation", description: "Upload required documents through our secure portal" },
-              { step: "3", title: "Assessment", description: "Our experts assess your application and find the best rates" },
-              { step: "4", title: "Settlement", description: "Get the keys to your new home and start living your dream" }
+              {
+                step: "1",
+                title: "Apply Online",
+                description:
+                  "Complete our quick online application in 10 minutes",
+              },
+              {
+                step: "2",
+                title: "Documentation",
+                description:
+                  "Upload required documents through our secure portal",
+              },
+              {
+                step: "3",
+                title: "Assessment",
+                description:
+                  "Our experts assess your application and find the best rates",
+              },
+              {
+                step: "4",
+                title: "Settlement",
+                description:
+                  "Get the keys to your new home and start living your dream",
+              },
             ].map((process, index) => (
               <div key={index} className="text-center">
                 <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold">
@@ -201,36 +289,39 @@ export default function HomeLoansPage() {
       {/* CTA */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Get Started?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Ready to Get Started?
+          </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Get your free home loan assessment today and take the first step towards homeownership.
+            Get your free home loan assessment today and take the first step
+            towards homeownership.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               className="bg-white text-blue-700 hover:bg-gray-100 px-8"
               onClick={() => {
-                window.location.hash = 'home';
+                window.location.hash = "home";
                 setTimeout(() => {
-                  const contactSection = document.getElementById('contact');
+                  const contactSection = document.getElementById("contact");
                   if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    contactSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }, 100);
               }}
             >
               Start Your Application
             </Button>
-            <Button 
-              size="lg" 
-              variant="outline" 
-              className="border-white text-white hover:bg-white/10 px-8"
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-white text-gray-900 hover:bg-white/10 px-8"
               onClick={() => {
-                window.location.hash = 'home';
+                window.location.hash = "home";
                 setTimeout(() => {
-                  const contactSection = document.getElementById('contact');
+                  const contactSection = document.getElementById("contact");
                   if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    contactSection.scrollIntoView({ behavior: "smooth" });
                   }
                 }, 100);
               }}
@@ -238,7 +329,9 @@ export default function HomeLoansPage() {
               Speak to an Expert
             </Button>
           </div>
-          <p className="text-sm text-blue-200 mt-4">*Rates subject to approval and may vary. Fees and charges apply.</p>
+          <p className="text-sm text-blue-200 mt-4">
+            *Rates subject to approval and may vary. Fees and charges apply.
+          </p>
         </div>
       </section>
     </div>
