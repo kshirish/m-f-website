@@ -1,0 +1,28 @@
+import MelbourneSuburbPage from "./MelbourneSuburbPage";
+
+export default function DocklandsPage() {
+  return (
+    <MelbourneSuburbPage
+      suburb="Docklands"
+      description="Live in Melbourne's modern waterfront precinct. Docklands offers contemporary apartment living, harbour views, and excellent amenities with strong investment potential for city professionals."
+      medianPrice="$650K"
+      growth="+2.1%"
+      population="15,000"
+      features={[
+        "Modern waterfront development",
+        "Harbour and city views",
+        "Contemporary apartment living",
+        "Marvel Stadium nearby",
+        "Excellent restaurants and shopping",
+        "Growing business district",
+      ]}
+      nearbySuburbs={[
+        "Melbourne CBD",
+        "South Wharf",
+        "Port Melbourne",
+        "Fishermans Bend",
+      ]}
+      imageQuery="docklands melbourne waterfront"
+    />
+  );
+}

@@ -1,4 +1,4 @@
-import SydneySuburbPage from "../SydneySuburbPage";
+import SydneySuburbPage from "./SydneySuburbPage";
 
 export default function PenrithPage() {
   return (

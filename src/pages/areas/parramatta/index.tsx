@@ -20,31 +20,31 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-export default function MelbournePage() {
+export default function ParramattaPage() {
   const navigate = useNavigate();
-  const melbourneStats = [
-    { icon: Users, value: "400+", label: "Melbourne Clients Served" },
-    { icon: Home, value: "$200M+", label: "In Melbourne Home Loans" },
-    { icon: Building, value: "30+", label: "Melbourne Suburbs Covered" },
-    { icon: Star, value: "4.9/5", label: "Melbourne Client Rating" },
+  const parramattaStats = [
+    { icon: Users, value: "350+", label: "Parramatta Clients Served" },
+    { icon: Home, value: "$150M+", label: "In Parramatta Home Loans" },
+    { icon: Building, value: "20+", label: "Parramatta Areas Covered" },
+    { icon: Star, value: "4.9/5", label: "Parramatta Client Rating" },
   ];
 
   const majorSuburbs = [
-    { name: "Melbourne CBD", route: "/areas/melbourne/suburbs/cbd" },
-    { name: "South Yarra", route: "/areas/melbourne/suburbs/south-yarra" },
-    { name: "Brighton", route: "/areas/melbourne/suburbs/brighton" },
-    { name: "Richmond", route: "/areas/melbourne/suburbs/richmond" },
-    { name: "St Kilda", route: "/areas/melbourne/suburbs/st-kilda" },
-    { name: "Docklands", route: "/areas/melbourne/suburbs/docklands" },
+    { name: "Parramatta CBD", route: "/areas/parramatta/suburbs/cbd" },
+    { name: "Westmead", route: "/areas/parramatta/suburbs/westmead" },
+    { name: "Harris Park", route: "/areas/parramatta/suburbs/harris-park" },
+    { name: "Granville", route: "/areas/parramatta/suburbs/granville" },
+    { name: "Merrylands", route: "/areas/parramatta/suburbs/merrylands" },
+    { name: "Auburn", route: "/areas/parramatta/suburbs/auburn" },
   ];
 
   const otherSuburbs = [
-    "Fitzroy",
-    "Carlton",
-    "Prahran",
-    "Toorak",
-    "Hawthorn",
-    "Camberwell",
+    "Rosehill",
+    "North Parramatta",
+    "South Granville",
+    "Clyde",
+    "Dundas",
+    "Telopea",
   ];
 
   const scrollToContact = () => {
@@ -71,60 +71,60 @@ export default function MelbournePage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-purple-900 via-indigo-900 to-purple-800 text-white overflow-hidden">
+      <section className="relative py-20 bg-gradient-to-br from-blue-900 via-cyan-900 to-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1545044846-351ba102b6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
-            alt="Melbourne skyline"
+            src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080"
+            alt="Parramatta area"
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-indigo-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-cyan-900/60"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-4 bg-purple-100 text-purple-800 border-purple-200">
+            <Badge className="mb-4 bg-blue-100 text-blue-800 border-blue-200">
               <MapPin className="w-4 h-4 mr-2" />
-              Melbourne, Victoria
+              Parramatta, Western Sydney, NSW
             </Badge>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Melbourne Mortgage
-              <span className="block text-purple-300">& Finance Experts</span>
+              Parramatta Mortgage
+              <span className="block text-blue-300">& Finance Experts</span>
             </h1>
 
             <p className="text-xl mb-8 max-w-3xl mx-auto opacity-90">
-              Your trusted mortgage brokers serving Melbourne and surrounding
-              suburbs. We understand Victoria's property market and help you
-              secure the best home loan deals across Melbourne's diverse
-              neighborhoods.
+              Your trusted mortgage brokers serving Parramatta and the greater
+              Western Sydney region. We understand the local property market and
+              help you secure the best home loan deals across this thriving
+              business hub.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-white text-purple-900 hover:bg-purple-50 px-8 py-4"
+                className="bg-white text-blue-900 hover:bg-blue-50 px-8 py-4"
               >
-                Get Free Melbourne Quote
+                Get Free Parramatta Quote
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
                 onClick={() => navigate("/calculator")}
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white hover:text-purple-900 px-8 py-4"
+                className="border-white text-white hover:bg-white hover:text-blue-900 px-8 py-4"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                (03) 9000 0000
+                (02) 9600 0000
               </Button>
             </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {melbourneStats.map((stat, index) => (
+              {parramattaStats.map((stat, index) => (
                 <div key={index} className="text-center">
-                  <stat.icon className="w-8 h-8 mx-auto mb-2 text-purple-300" />
+                  <stat.icon className="w-8 h-8 mx-auto mb-2 text-blue-300" />
                   <div className="text-2xl font-bold">{stat.value}</div>
                   <div className="text-sm opacity-80">{stat.label}</div>
                 </div>
@@ -134,25 +134,25 @@ export default function MelbournePage() {
         </div>
       </section>
 
-      {/* Melbourne Suburbs Section */}
+      {/* Parramatta Areas Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Melbourne Suburbs We Serve
+                Parramatta Areas We Serve
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                From the vibrant CBD to trendy inner suburbs and prestigious
-                areas, we provide expert mortgage services across Melbourne's
-                diverse regions.
+                From the bustling CBD to surrounding suburbs and multicultural
+                communities, we provide expert mortgage services across the
+                greater Parramatta region.
               </p>
             </div>
 
-            {/* Major Suburbs */}
+            {/* Major Areas */}
             <div className="mb-12">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-                Major Melbourne Areas
+                Major Parramatta Areas
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {majorSuburbs.map((suburb, index) => (
@@ -163,13 +163,13 @@ export default function MelbournePage() {
                     <CardHeader>
                       <CardTitle className="flex items-center justify-between">
                         {suburb.name}
-                        <ArrowRight className="w-5 h-5 text-purple-600" />
+                        <ArrowRight className="w-5 h-5 text-blue-600" />
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <Button
                         onClick={() => navigate(suburb.route)}
-                        className="w-full bg-purple-600 hover:bg-purple-700"
+                        className="w-full bg-blue-600 hover:bg-blue-700"
                       >
                         View {suburb.name} Services
                       </Button>
@@ -179,10 +179,10 @@ export default function MelbournePage() {
               </div>
             </div>
 
-            {/* Other Suburbs */}
+            {/* Other Areas */}
             <div className="text-center">
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Other Melbourne Suburbs We Serve
+                Other Parramatta Areas We Serve
               </h3>
               <div className="flex flex-wrap justify-center gap-3 mb-8">
                 {otherSuburbs.map((suburb, index) => (
@@ -192,12 +192,12 @@ export default function MelbournePage() {
                 ))}
               </div>
               <p className="text-gray-600 mb-6">
-                Don't see your suburb? We serve all Melbourne metropolitan areas
-                and surrounding regions.
+                Don't see your area? We serve all Parramatta region and
+                surrounding communities.
               </p>
               <Button
                 onClick={scrollToContact}
-                className="bg-purple-600 hover:bg-purple-700"
+                className="bg-blue-600 hover:bg-blue-700"
               >
                 Contact Us About Your Area
               </Button>
@@ -212,10 +212,10 @@ export default function MelbournePage() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Melbourne Mortgage Services
+                Parramatta Mortgage Services
               </h2>
               <p className="text-xl text-gray-600">
-                Comprehensive financial solutions tailored for Melbourne
+                Comprehensive financial solutions tailored for Parramatta
                 residents
               </p>
             </div>
@@ -223,34 +223,34 @@ export default function MelbournePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
-                  title: "First Home Buyer Melbourne",
+                  title: "First Home Buyer Parramatta",
                   description:
-                    "Special programs for Melbourne first-time buyers",
+                    "Special programs for Parramatta first-time buyers",
                   icon: Home,
                 },
                 {
-                  title: "Melbourne Investment Loans",
+                  title: "Parramatta Investment Loans",
                   description:
-                    "Capitalize on Melbourne's rental market opportunities",
+                    "Capitalize on Parramatta's growth opportunities",
                   icon: Building,
                 },
                 {
-                  title: "Melbourne Refinancing",
+                  title: "Parramatta Refinancing",
                   description:
-                    "Switch to better rates for your Melbourne property",
+                    "Switch to better rates for your Parramatta property",
                   icon: Star,
                 },
               ].map((service, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
-                    <service.icon className="w-12 h-12 text-purple-600 mb-4" />
+                    <service.icon className="w-12 h-12 text-blue-600 mb-4" />
                     <CardTitle>{service.title}</CardTitle>
                     <CardDescription>{service.description}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <Button
                       onClick={scrollToContact}
-                      className="w-full bg-purple-600 hover:bg-purple-700"
+                      className="w-full bg-blue-600 hover:bg-blue-700"
                     >
                       Learn More
                     </Button>
@@ -267,16 +267,16 @@ export default function MelbournePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Why Choose Us for Your Melbourne Home Loan?
+              Why Choose Us for Your Parramatta Home Loan?
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
               {[
-                "Local Melbourne market expertise",
+                "Local Parramatta market expertise",
                 "Access to 50+ lenders",
                 "No broker fees for most loans",
                 "Pre-approval specialists",
-                "Melbourne property insights",
+                "Parramatta property insights",
                 "Same-day loan assessments",
               ].map((benefit, index) => (
                 <div key={index} className="flex items-center">
@@ -289,9 +289,9 @@ export default function MelbournePage() {
             <Button
               onClick={scrollToContact}
               size="lg"
-              className="bg-purple-600 hover:bg-purple-700 px-8 py-4"
+              className="bg-blue-600 hover:bg-blue-700 px-8 py-4"
             >
-              Get Your Free Melbourne Quote Today
+              Get Your Free Parramatta Quote Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
@@ -303,27 +303,27 @@ export default function MelbournePage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8">
-              Ready to Get Started in Melbourne?
+              Ready to Get Started in Parramatta?
             </h2>
             <p className="text-xl text-gray-600 mb-8">
-              Contact our Melbourne mortgage specialists today for expert advice
-              and competitive home loan rates.
+              Contact our Parramatta mortgage specialists today for expert
+              advice and competitive home loan rates.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={scrollToContact}
                 size="lg"
-                className="bg-purple-600 hover:bg-purple-700 px-8 py-4"
+                className="bg-blue-600 hover:bg-blue-700 px-8 py-4"
               >
                 <Phone className="mr-2 h-5 w-5" />
-                Call (03) 9000 0000
+                Call (02) 9600 0000
               </Button>
               <Button
                 onClick={scrollToContact}
                 variant="outline"
                 size="lg"
-                className="border-purple-600 text-purple-600 hover:bg-purple-600 hover:text-white px-8 py-4"
+                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4"
               >
                 Get Free Quote
               </Button>
