@@ -1,15 +1,17 @@
 import { Card, CardContent } from "./ui/card";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { MapPin, Phone, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function ServiceAreas() {
+  const navigate = useNavigate();
   const areas = [
     { name: "Sydney", isMain: true },
     { name: "Perth", isMain: false },
     { name: "Melbourne", isMain: false },
     { name: "Penrith", isMain: false },
     { name: "Parramatta", isMain: false },
-    { name: "Adelaide", isMain: false }
+    { name: "Adelaide", isMain: false },
   ];
 
   return (
@@ -22,42 +24,50 @@ export default function ServiceAreas() {
               Service Areas
             </h2>
             <p className="text-lg text-gray-600 mb-8">
-              We proudly serve clients across major Australian cities, with our headquarters 
-              based in Sydney. No matter where you are, our expert team is ready to help 
-              you achieve your financial goals.
+              We proudly serve clients across major Australian cities, with our
+              headquarters based in Sydney. No matter where you are, our expert
+              team is ready to help you achieve your financial goals.
             </p>
 
             {/* Areas Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
               {areas.map((area, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className={`p-4 text-center transition-all duration-300 hover:shadow-md cursor-pointer ${
-                    area.isMain ? 'bg-blue-50 border-blue-200' : 'hover:bg-gray-50'
+                    area.isMain
+                      ? "bg-blue-50 border-blue-200"
+                      : "hover:bg-gray-50"
                   }`}
                   onClick={() => {
                     const areaLinks: { [key: string]: string } = {
-                      "Sydney": "#areas/sydney",
-                      "Melbourne": "#areas/melbourne",
-                      "Perth": "#areas/perth",
-                      "Adelaide": "#areas/adelaide",
-                      "Penrith": "#areas/penrith",
-                      "Parramatta": "#areas/parramatta"
+                      Sydney: "/areas/sydney",
+                      Melbourne: "/areas/melbourne",
+                      Perth: "/areas/perth",
+                      Adelaide: "/areas/adelaide",
+                      Penrith: "/areas/penrith",
+                      Parramatta: "/areas/parramatta",
                     };
-                    window.location.hash = areaLinks[area.name] || "#areas";
+                    navigate(areaLinks[area.name] || "/areas");
                   }}
                 >
                   <CardContent className="p-0">
-                    <MapPin className={`w-6 h-6 mx-auto mb-2 ${
-                      area.isMain ? 'text-blue-600' : 'text-gray-500'
-                    }`} />
-                    <h3 className={`font-medium ${
-                      area.isMain ? 'text-blue-900' : 'text-gray-900'
-                    }`}>
+                    <MapPin
+                      className={`w-6 h-6 mx-auto mb-2 ${
+                        area.isMain ? "text-blue-600" : "text-gray-500"
+                      }`}
+                    />
+                    <h3
+                      className={`font-medium ${
+                        area.isMain ? "text-blue-900" : "text-gray-900"
+                      }`}
+                    >
                       {area.name}
                     </h3>
                     {area.isMain && (
-                      <span className="text-xs text-blue-600 mt-1 block">Headquarters</span>
+                      <span className="text-xs text-blue-600 mt-1 block">
+                        Headquarters
+                      </span>
                     )}
                   </CardContent>
                 </Card>
@@ -68,11 +78,16 @@ export default function ServiceAreas() {
             <div className="space-y-4">
               <div className="flex items-center space-x-3 text-gray-700">
                 <Phone className="w-5 h-5 text-blue-600" />
-                <span>Call us at <strong>1300 MY CHOICE</strong> for immediate assistance</span>
+                <span>
+                  Call us at <strong>1300 MY CHOICE</strong> for immediate
+                  assistance
+                </span>
               </div>
               <div className="flex items-center space-x-3 text-gray-700">
                 <Clock className="w-5 h-5 text-blue-600" />
-                <span>Available <strong>Monday to Friday</strong> 9AM - 6PM</span>
+                <span>
+                  Available <strong>Monday to Friday</strong> 9AM - 6PM
+                </span>
               </div>
             </div>
           </div>
@@ -87,12 +102,14 @@ export default function ServiceAreas() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
             </div>
-            
+
             {/* Floating Card */}
             <Card className="absolute -bottom-6 -left-6 bg-white shadow-xl border-0 p-6">
               <CardContent className="p-0">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 mb-1">6+</div>
+                  <div className="text-2xl font-bold text-blue-600 mb-1">
+                    6+
+                  </div>
                   <div className="text-sm text-gray-600">Cities Served</div>
                 </div>
               </CardContent>

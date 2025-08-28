@@ -1,8 +1,17 @@
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { ArrowRight, Shield, Clock, Users, Calculator } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <section
       id="home"
@@ -43,6 +52,7 @@ export default function Hero() {
             <Button
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
+              onClick={scrollToContact}
             >
               Get Free Quote
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -51,7 +61,7 @@ export default function Hero() {
               size="lg"
               variant="outline"
               className="border-white text-gray-900 hover:bg-gray-100 px-8 py-4"
-              onClick={() => (window.location.hash = "calculator")}
+              onClick={() => navigate("/calculator")}
             >
               <Calculator className="mr-2 w-5 h-5" />
               Loan Calculator

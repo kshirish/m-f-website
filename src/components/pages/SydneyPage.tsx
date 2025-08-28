@@ -19,8 +19,10 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function SydneyPage() {
+  const navigate = useNavigate();
   const sydneyStats = [
     { icon: Users, value: "500+", label: "Sydney Clients Served" },
     { icon: Home, value: "$250M+", label: "In Sydney Home Loans" },
@@ -29,12 +31,12 @@ export default function SydneyPage() {
   ];
 
   const majorSuburbs = [
-    { name: "Sydney CBD", route: "#areas/sydney/cbd" },
-    { name: "Parramatta", route: "#areas/sydney/parramatta" },
-    { name: "Bondi", route: "#areas/sydney/bondi" },
-    { name: "Manly", route: "#areas/sydney/manly" },
-    { name: "Chatswood", route: "#areas/sydney/chatswood" },
-    { name: "Penrith", route: "#areas/sydney/penrith" },
+    { name: "Sydney CBD", route: "/areas/sydney/suburbs/cbd" },
+    { name: "Parramatta", route: "/areas/sydney/suburbs/parramatta" },
+    { name: "Bondi", route: "/areas/sydney/suburbs/bondi" },
+    { name: "Manly", route: "/areas/sydney/suburbs/manly" },
+    { name: "Chatswood", route: "/areas/sydney/suburbs/chatswood" },
+    { name: "Penrith", route: "/areas/sydney/suburbs/penrith" },
   ];
 
   const otherSuburbs = [
@@ -208,7 +210,7 @@ export default function SydneyPage() {
                 <Card
                   key={index}
                   className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:bg-blue-50 cursor-pointer group"
-                  onClick={() => (window.location.hash = suburb.route)}
+                  onClick={() => navigate(suburb.route)}
                 >
                   <CardContent className="p-0">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardContent,
@@ -29,6 +30,7 @@ import {
 } from "lucide-react";
 
 export default function CalculatorPage() {
+  const navigate = useNavigate();
   const [loanAmount, setLoanAmount] = useState(600000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
@@ -103,7 +105,7 @@ export default function CalculatorPage() {
   };
 
   const scrollToContact = () => {
-    window.location.hash = "home";
+    navigate("/");
     setTimeout(() => {
       const contactSection = document.getElementById("contact");
       if (contactSection) {
