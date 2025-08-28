@@ -1,6 +1,6 @@
-# Professional Mortgage Brokerage Website
+# My Choice Mortgage and Finance
 
-This is a code bundle for Professional Mortgage Brokerage Website. The original project is available at https://www.figma.com/design/XCEFBKq8fYwuRxLGwyQSTx/Professional-Mortgage-Brokerage-Website.
+This is a code bundle for My Choice Mortgage and Finance. The original project is available at https://www.figma.com/design/XCEFBKq8fYwuRxLGwyQSTx/Professional-Mortgage-Brokerage-Website.
 
 ## Running the code
 
