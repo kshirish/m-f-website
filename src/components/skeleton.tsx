@@ -1,4 +1,4 @@
-import { cn } from "@/hooks/utils";
+import { cn } from "@/hooks";
 
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
