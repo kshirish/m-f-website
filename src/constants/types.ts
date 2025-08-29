@@ -17,6 +17,34 @@ export interface AreaStatsLabels {
 export interface AreaService {
   title: string;
   description: string;
+  icon?: string; // Optional icon identifier for UI components
+}
+
+export interface AreaOffice {
+  address: string;
+  phone: string;
+  hours: string;
+}
+
+export interface AreaMarketInsights {
+  medianPrice: string;
+  loanRates: string;
+  grants: string;
+}
+
+export interface AreaPageTexts {
+  statsSubheading: string;
+  servicesSubheading: string;
+  suburbsDescription: string;
+  featuredSuburbsTitle: string;
+  otherSuburbsTitle: string;
+  suburbsCallout: string;
+  officeTitle: string;
+  officeDescription: string;
+  ctaTitle: string;
+  ctaDescription: string;
+  primaryCTA: string;
+  secondaryCTA: string;
 }
 
 export interface Area {
@@ -36,6 +64,9 @@ export interface Area {
   suburbs: string[];
   otherSuburbs: string[];
   route: string;
+  office?: AreaOffice;
+  marketInsights?: AreaMarketInsights;
+  pageTexts?: AreaPageTexts;
 }
 
 export interface Suburb {

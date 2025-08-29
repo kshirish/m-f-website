@@ -1,23 +1,23 @@
 import SydneySuburbPage from "./SydneySuburbPage";
+import { getSuburbById } from "@/constants/common";
 
 export default function ParramattaPage() {
+  const suburbData = getSuburbById("parramatta");
+
+  if (!suburbData) {
+    return <div>Suburb not found</div>;
+  }
+
   return (
     <SydneySuburbPage
-      suburb="Parramatta"
-      description="Discover Western Sydney's thriving hub with excellent growth prospects, modern amenities, and strong community spirit. Parramatta offers great value for families and investors alike."
-      medianPrice="$920K"
-      growth="+8.1%"
-      population="28,491"
-      features={[
-        "Rapid infrastructure development",
-        "Major shopping and dining precincts",
-        "Excellent public transport links",
-        "Strong rental demand",
-        "Family-friendly neighborhoods", 
-        "Growing business district"
-      ]}
-      nearbySuburbs={["Westmead", "Harris Park", "Granville", "Merrylands"]}
-      imageQuery="parramatta sydney suburb"
+      suburb={suburbData.name}
+      description={suburbData.description}
+      medianPrice={suburbData.medianPrice}
+      growth={suburbData.growth}
+      population={suburbData.population}
+      features={suburbData.features}
+      nearbySuburbs={suburbData.nearbySuburbs}
+      imageQuery={suburbData.imageQuery}
     />
   );
 }

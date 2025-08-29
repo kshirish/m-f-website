@@ -1,23 +1,23 @@
 import SydneySuburbPage from "./SydneySuburbPage";
+import { getSuburbById } from "@/constants/common";
 
 export default function SydneyCBDPage() {
+  const suburbData = getSuburbById("sydney-cbd");
+
+  if (!suburbData) {
+    return <div>Suburb not found</div>;
+  }
+
   return (
     <SydneySuburbPage
-      suburb="Sydney CBD"
-      description="Experience city living at its finest in Sydney's bustling Central Business District. From luxury apartments to heritage properties, the CBD offers unparalleled lifestyle and investment opportunities."
-      medianPrice="$1.8M"
-      growth="+5.2%"
-      population="17,252"
-      features={[
-        "World-class dining and entertainment",
-        "Prime public transport connectivity", 
-        "Walking distance to major attractions",
-        "High rental yields for investors",
-        "24/7 vibrant city lifestyle",
-        "Premium office spaces and business hubs"
-      ]}
-      nearbySuburbs={["The Rocks", "Darling Harbour", "Pyrmont", "Surry Hills"]}
-      imageQuery="sydney city buildings"
+      suburb={suburbData.name}
+      description={suburbData.description}
+      medianPrice={suburbData.medianPrice}
+      growth={suburbData.growth}
+      population={suburbData.population}
+      features={suburbData.features}
+      nearbySuburbs={suburbData.nearbySuburbs}
+      imageQuery={suburbData.imageQuery}
     />
   );
 }

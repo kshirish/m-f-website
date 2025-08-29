@@ -1,23 +1,23 @@
 import SydneySuburbPage from "./SydneySuburbPage";
+import { getSuburbById } from "@/constants/common";
 
 export default function PenrithPage() {
+  const suburbData = getSuburbById("penrith");
+
+  if (!suburbData) {
+    return <div>Suburb not found</div>;
+  }
+
   return (
     <SydneySuburbPage
-      suburb="Penrith"
-      description="Embrace the perfect blend of city convenience and natural beauty at the foothills of the Blue Mountains. Penrith offers affordable housing with strong growth potential and family-friendly living."
-      medianPrice="$785K"
-      growth="+12.4%"
-      population="15,066"
-      features={[
-        "Close to Blue Mountains National Park",
-        "Major retail and entertainment hubs",
-        "Affordable entry-level properties",
-        "Strong population growth",
-        "Excellent schools and facilities",
-        "Gateway to Western Sydney"
-      ]}
-      nearbySuburbs={["St Marys", "Kingswood", "Emu Plains", "Cambridge Park"]}
-      imageQuery="penrith sydney mountains"
+      suburb={suburbData.name}
+      description={suburbData.description}
+      medianPrice={suburbData.medianPrice}
+      growth={suburbData.growth}
+      population={suburbData.population}
+      features={suburbData.features}
+      nearbySuburbs={suburbData.nearbySuburbs}
+      imageQuery={suburbData.imageQuery}
     />
   );
 }

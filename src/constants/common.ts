@@ -35,19 +35,23 @@ export const areas: AreasData = {
           title: "First Home Buyer Assistance",
           description:
             "Navigate Sydney's competitive market with expert guidance",
+          icon: "Home",
         },
         {
           title: "Investment Property Loans",
           description: "Capitalize on Sydney's strong rental market",
+          icon: "Building",
         },
         {
           title: "Commercial Property Finance",
           description: "Secure prime Sydney commercial real estate",
+          icon: "Building",
         },
         {
           title: "Refinancing Solutions",
           description:
             "Switch to better rates and save on your Sydney property",
+          icon: "Star",
         },
       ],
       suburbs: [
@@ -67,6 +71,35 @@ export const areas: AreasData = {
         "Sutherland",
       ],
       route: "/areas/sydney",
+      office: {
+        address: "Level 5, 123 George Street, Sydney NSW 2000",
+        phone: "(02) 9000 0000",
+        hours: "Mon-Fri: 9AM-6PM | Sat: 9AM-2PM",
+      },
+      marketInsights: {
+        medianPrice: "$1.2M",
+        loanRates: "from 5.99%*",
+        grants: "Up to $25K",
+      },
+      pageTexts: {
+        statsSubheading: "Our track record speaks for itself",
+        servicesSubheading:
+          "Local expertise for Sydney's unique property market",
+        suburbsDescription:
+          "From the CBD to the outer suburbs, we serve clients across Greater Sydney",
+        featuredSuburbsTitle: "Featured Sydney Areas",
+        otherSuburbsTitle: "Other Sydney Areas We Serve",
+        suburbsCallout:
+          "Don't see your suburb? We serve all of Greater Sydney!",
+        officeTitle: "Visit Our Sydney Office",
+        officeDescription:
+          "Located in the heart of Sydney's business district, our team of local mortgage specialists is ready to help you navigate Sydney's property market.",
+        ctaTitle: "Ready to Buy in Sydney?",
+        ctaDescription:
+          "Our Sydney-based experts are here to guide you through every step of the home buying process.",
+        primaryCTA: "Start Your Sydney Application",
+        secondaryCTA: "Call Our Sydney Team",
+      },
     },
     melbourne: {
       id: "melbourne",
@@ -97,14 +130,17 @@ export const areas: AreasData = {
         {
           title: "First Home Buyer Melbourne",
           description: "Special programs for Melbourne first-time buyers",
+          icon: "Home",
         },
         {
           title: "Melbourne Investment Loans",
           description: "Capitalize on Melbourne's rental market opportunities",
+          icon: "Building",
         },
         {
           title: "Melbourne Refinancing",
           description: "Switch to better rates for your Melbourne property",
+          icon: "Star",
         },
       ],
       suburbs: [
@@ -154,14 +190,17 @@ export const areas: AreasData = {
         {
           title: "Perth First Home Buyers",
           description: "Navigate WA's first home buyer incentives and grants",
+          icon: "Home",
         },
         {
           title: "Perth Investment Properties",
           description: "Capitalize on Perth's mining boom and rental growth",
+          icon: "Building",
         },
         {
           title: "Perth Refinancing",
           description: "Switch to better rates for your Perth property",
+          icon: "Star",
         },
       ],
       suburbs: [
@@ -211,14 +250,17 @@ export const areas: AreasData = {
         {
           title: "Adelaide First Home Buyers",
           description: "Take advantage of SA's affordable property market",
+          icon: "Home",
         },
         {
           title: "Adelaide Investment Loans",
           description: "Invest in Adelaide's steady growth market",
+          icon: "Building",
         },
         {
           title: "Adelaide Refinancing",
           description: "Secure better rates for your Adelaide property",
+          icon: "Star",
         },
       ],
       suburbs: ["adelaide-cbd", "glenelg"],
@@ -261,14 +303,17 @@ export const areas: AreasData = {
         {
           title: "Penrith First Home Buyers",
           description: "Affordable entry into the Sydney property market",
+          icon: "Home",
         },
         {
           title: "Penrith Investment Properties",
           description: "Capitalize on western Sydney's growth corridor",
+          icon: "Building",
         },
         {
           title: "Penrith Refinancing",
           description: "Better rates for your western Sydney property",
+          icon: "Star",
         },
       ],
       suburbs: [],
@@ -311,14 +356,17 @@ export const areas: AreasData = {
         {
           title: "Parramatta CBD Properties",
           description: "Secure prime real estate in Sydney's second CBD",
+          icon: "Building",
         },
         {
           title: "Parramatta Investment Loans",
           description: "Capitalize on the rapid urban development",
+          icon: "Building",
         },
         {
           title: "Commercial Finance Parramatta",
           description: "Business loans for the growing commercial district",
+          icon: "Building",
         },
       ],
       suburbs: [],
@@ -843,3 +891,21 @@ export const getAreaRoute = (areaId: string): string | undefined =>
   areas.byId[areaId]?.route;
 export const getSuburbRoute = (suburbId: string): string | undefined =>
   suburbs.byId[suburbId]?.route;
+
+// Get major suburbs for an area with name and route info
+export const getMajorSuburbsForArea = (
+  areaId: string
+): Array<{ name: string; route: string }> => {
+  const area = areas.byId[areaId];
+  if (!area?.suburbs) return [];
+
+  return area.suburbs
+    .map((suburbId) => {
+      const suburb = suburbs.byId[suburbId];
+      return {
+        name: suburb?.name || suburbId,
+        route: suburb?.route || `/areas/${areaId}/suburbs/${suburbId}`,
+      };
+    })
+    .filter(Boolean);
+};
