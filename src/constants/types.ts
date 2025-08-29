@@ -47,6 +47,33 @@ export interface AreaPageTexts {
   secondaryCTA: string;
 }
 
+export interface SuburbService {
+  title: string;
+  description: string;
+}
+
+export interface SuburbPageTexts {
+  heroSubtitle: string;
+  primaryCTAButton: string;
+  secondaryCTAButton: string;
+  marketInsightsTitle: string;
+  marketInsightsSubtitle: string;
+  medianPriceLabel: string;
+  growthLabel: string;
+  populationLabel: string;
+  featuresTitle: string;
+  featuresSubtitle: string;
+  servicesTitle: string;
+  servicesSubtitle: string;
+  servicesCTAButton: string;
+  nearbyAreasTitle: string;
+  nearbyAreasSubtitle: string;
+  finalCTATitle: string;
+  finalCTADescription: string;
+  finalPrimaryCTA: string;
+  finalSecondaryCTA: string;
+}
+
 export interface Area {
   id: string;
   name: string;
@@ -82,6 +109,8 @@ export interface Suburb {
   nearbySuburbs: string[];
   imageQuery: string;
   route: string;
+  services?: SuburbService[];
+  pageTexts?: SuburbPageTexts;
 }
 
 export interface AreasData {

@@ -1,7 +1,62 @@
 // Normalized data structure for all areas and suburbs
 // This file contains all area and suburb related data in one place
 
-import type { Area, Suburb, AreasData, SuburbsData } from "./types";
+import type {
+  Area,
+  Suburb,
+  AreasData,
+  SuburbsData,
+  SuburbService,
+  SuburbPageTexts,
+} from "./types";
+
+// Helper function to generate common suburb services
+function createSuburbServices(suburbName: string): SuburbService[] {
+  return [
+    {
+      title: "First Home Buyer Loans",
+      description: `Special rates for first-time buyers in ${suburbName}`,
+    },
+    {
+      title: "Investment Property Loans",
+      description: `Capitalize on ${suburbName}'s rental market potential`,
+    },
+    {
+      title: "Refinancing",
+      description: `Switch to better rates for your ${suburbName} property`,
+    },
+    {
+      title: "Property Valuation",
+      description: `Free property valuations for ${suburbName} homes`,
+    },
+  ];
+}
+
+// Helper function to generate common suburb page texts
+function createSuburbPageTexts(): SuburbPageTexts {
+  return {
+    heroSubtitle: "Home Loans",
+    primaryCTAButton: "Get {suburb} Quote",
+    secondaryCTAButton: "Call Our Team",
+    marketInsightsTitle: "{suburb} Market Insights",
+    marketInsightsSubtitle: "Current market data for {suburb}",
+    medianPriceLabel: "Median House Price",
+    growthLabel: "Annual Growth",
+    populationLabel: "Population",
+    featuresTitle: "Why Choose {suburb}?",
+    featuresSubtitle: "What makes {suburb} a great place to live",
+    servicesTitle: "{suburb} Finance Services",
+    servicesSubtitle: "Specialized lending solutions for {suburb} residents",
+    servicesCTAButton: "Get {suburb} Quote",
+    nearbyAreasTitle: "Nearby {area} Areas",
+    nearbyAreasSubtitle: "We also serve these surrounding areas",
+    finalCTATitle: "Ready to Buy in {suburb}?",
+    finalCTADescription:
+      "Our {suburb} specialists are here to guide you through every step of the home buying process.",
+    finalPrimaryCTA: "Start Your {suburb} Application",
+    finalSecondaryCTA: "Contact Our {suburb} Team",
+  };
+}
 
 export const areas: AreasData = {
   byId: {
@@ -54,14 +109,7 @@ export const areas: AreasData = {
           icon: "Star",
         },
       ],
-      suburbs: [
-        "sydney-cbd",
-        "parramatta",
-        "bondi",
-        "manly",
-        "chatswood",
-        "penrith",
-      ],
+      suburbs: ["sydney-cbd", "bondi", "manly", "chatswood"],
       otherSuburbs: [
         "Hornsby",
         "Liverpool",
@@ -274,114 +322,8 @@ export const areas: AreasData = {
       ],
       route: "/areas/adelaide",
     },
-    penrith: {
-      id: "penrith",
-      name: "Penrith",
-      state: "NSW",
-      displayName: "Penrith Area Mortgage Specialists",
-      tagline: "Greater Western Sydney",
-      description:
-        "Expert mortgage services for Penrith and the greater western Sydney region. We understand the local market dynamics and help families and investors secure the best home loan deals in this growing corridor.",
-      heroImage:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      gradient: "from-indigo-900 via-blue-900 to-teal-800",
-      accentColor: "indigo",
-      phone: "(02) 4700 0000",
-      stats: {
-        clients: "200+",
-        loans: "$100M+",
-        suburbs: "15+",
-        rating: "4.8/5",
-      },
-      statsLabels: {
-        clients: "Penrith Clients Served",
-        loans: "In Penrith Home Loans",
-        suburbs: "Penrith Areas Covered",
-        rating: "Penrith Client Rating",
-      },
-      services: [
-        {
-          title: "Penrith First Home Buyers",
-          description: "Affordable entry into the Sydney property market",
-          icon: "Home",
-        },
-        {
-          title: "Penrith Investment Properties",
-          description: "Capitalize on western Sydney's growth corridor",
-          icon: "Building",
-        },
-        {
-          title: "Penrith Refinancing",
-          description: "Better rates for your western Sydney property",
-          icon: "Star",
-        },
-      ],
-      suburbs: [],
-      otherSuburbs: [
-        "Penrith CBD",
-        "Kingswood",
-        "St Marys",
-        "Mount Druitt",
-        "Blacktown",
-        "Richmond",
-      ],
-      route: "/areas/penrith",
-    },
-    parramatta: {
-      id: "parramatta",
-      name: "Parramatta",
-      state: "NSW",
-      displayName: "Parramatta Business District Mortgage Experts",
-      tagline: "Sydney's Second CBD",
-      description:
-        "Specialized mortgage services for Parramatta and surrounding business districts. As Sydney's second CBD rapidly develops, we help you secure optimal financing for both residential and commercial properties in this thriving hub.",
-      heroImage:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      gradient: "from-cyan-900 via-blue-900 to-indigo-800",
-      accentColor: "cyan",
-      phone: "(02) 9600 0000",
-      stats: {
-        clients: "180+",
-        loans: "$90M+",
-        suburbs: "12+",
-        rating: "4.9/5",
-      },
-      statsLabels: {
-        clients: "Parramatta Clients Served",
-        loans: "In Parramatta Home Loans",
-        suburbs: "Parramatta Areas Covered",
-        rating: "Parramatta Client Rating",
-      },
-      services: [
-        {
-          title: "Parramatta CBD Properties",
-          description: "Secure prime real estate in Sydney's second CBD",
-          icon: "Building",
-        },
-        {
-          title: "Parramatta Investment Loans",
-          description: "Capitalize on the rapid urban development",
-          icon: "Building",
-        },
-        {
-          title: "Commercial Finance Parramatta",
-          description: "Business loans for the growing commercial district",
-          icon: "Building",
-        },
-      ],
-      suburbs: [],
-      otherSuburbs: [
-        "Harris Park",
-        "Westmead",
-        "Granville",
-        "Auburn",
-        "Merrylands",
-        "Fairfield",
-      ],
-      route: "/areas/parramatta",
-    },
   },
-  allIds: ["sydney", "melbourne", "perth", "adelaide", "penrith", "parramatta"],
+  allIds: ["sydney", "melbourne", "perth", "adelaide"],
 };
 
 export const suburbs: SuburbsData = {
@@ -407,28 +349,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["The Rocks", "Darling Harbour", "Pyrmont", "Surry Hills"],
       imageQuery: "sydney city buildings",
       route: "/areas/sydney/suburbs/cbd",
-    },
-    parramatta: {
-      id: "parramatta",
-      areaId: "sydney",
-      name: "Parramatta",
-      slug: "parramatta",
-      description:
-        "Sydney's second CBD offers excellent value and growth potential. Modern apartments, business opportunities, and great transport links make Parramatta ideal for both living and investing.",
-      medianPrice: "$850K",
-      growth: "+7.1%",
-      population: "25,000",
-      features: [
-        "Sydney's second CBD",
-        "Major transport interchange",
-        "Growing business district",
-        "Affordable compared to CBD",
-        "Strong rental demand",
-        "Major redevelopment projects",
-      ],
-      nearbySuburbs: ["Harris Park", "Westmead", "Granville", "Auburn"],
-      imageQuery: "parramatta sydney skyline",
-      route: "/areas/sydney/suburbs/parramatta",
+      services: createSuburbServices("Sydney CBD"),
+      pageTexts: createSuburbPageTexts(),
     },
     bondi: {
       id: "bondi",
@@ -451,6 +373,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Bondi Junction", "Bronte", "Tamarama", "Waverley"],
       imageQuery: "bondi beach sydney",
       route: "/areas/sydney/suburbs/bondi",
+      services: createSuburbServices("Bondi"),
+      pageTexts: createSuburbPageTexts(),
     },
     manly: {
       id: "manly",
@@ -473,6 +397,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Fairlight", "Balgowlah", "Seaforth", "Queenscliff"],
       imageQuery: "manly beach sydney",
       route: "/areas/sydney/suburbs/manly",
+      services: createSuburbServices("Manly"),
+      pageTexts: createSuburbPageTexts(),
     },
     chatswood: {
       id: "chatswood",
@@ -495,28 +421,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Willoughby", "Artarmon", "Lane Cove", "Roseville"],
       imageQuery: "chatswood sydney shopping",
       route: "/areas/sydney/suburbs/chatswood",
-    },
-    penrith: {
-      id: "penrith",
-      areaId: "sydney",
-      name: "Penrith",
-      slug: "penrith",
-      description:
-        "Discover affordable family living in Sydney's growing western corridor. Penrith offers great value, new developments, and excellent transport links to the CBD and Blue Mountains.",
-      medianPrice: "$680K",
-      growth: "+8.5%",
-      population: "15,000",
-      features: [
-        "Affordable entry into Sydney market",
-        "Growing transport infrastructure",
-        "Close to Blue Mountains",
-        "Family-friendly community",
-        "New residential developments",
-        "Strong growth potential",
-      ],
-      nearbySuburbs: ["Kingswood", "St Marys", "Blacktown", "Mount Druitt"],
-      imageQuery: "penrith sydney suburban",
-      route: "/areas/sydney/suburbs/penrith",
+      services: createSuburbServices("Chatswood"),
+      pageTexts: createSuburbPageTexts(),
     },
     "melbourne-cbd": {
       id: "melbourne-cbd",
@@ -539,6 +445,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Southbank", "Docklands", "Carlton", "East Melbourne"],
       imageQuery: "melbourne cbd skyline",
       route: "/areas/melbourne/suburbs/cbd",
+      services: createSuburbServices("Melbourne CBD"),
+      pageTexts: createSuburbPageTexts(),
     },
     "south-yarra": {
       id: "south-yarra",
@@ -561,6 +469,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Toorak", "Prahran", "Richmond", "Windsor"],
       imageQuery: "south yarra melbourne chapel street",
       route: "/areas/melbourne/suburbs/south-yarra",
+      services: createSuburbServices("South Yarra"),
+      pageTexts: createSuburbPageTexts(),
     },
     brighton: {
       id: "brighton",
@@ -583,6 +493,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Hampton", "Sandringham", "Bentleigh", "Brighton East"],
       imageQuery: "brighton melbourne beach boxes",
       route: "/areas/melbourne/suburbs/brighton",
+      services: createSuburbServices("Brighton"),
+      pageTexts: createSuburbPageTexts(),
     },
     richmond: {
       id: "richmond",
@@ -605,6 +517,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Collingwood", "Fitzroy", "Cremorne", "South Yarra"],
       imageQuery: "richmond melbourne inner city",
       route: "/areas/melbourne/suburbs/richmond",
+      services: createSuburbServices("Richmond"),
+      pageTexts: createSuburbPageTexts(),
     },
     "st-kilda": {
       id: "st-kilda",
@@ -627,6 +541,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["St Kilda East", "Elwood", "Balaclava", "Windsor"],
       imageQuery: "st kilda melbourne pier",
       route: "/areas/melbourne/suburbs/st-kilda",
+      services: createSuburbServices("St Kilda"),
+      pageTexts: createSuburbPageTexts(),
     },
     docklands: {
       id: "docklands",
@@ -654,6 +570,8 @@ export const suburbs: SuburbsData = {
       ],
       imageQuery: "docklands melbourne waterfront",
       route: "/areas/melbourne/suburbs/docklands",
+      services: createSuburbServices("Docklands"),
+      pageTexts: createSuburbPageTexts(),
     },
     "perth-cbd": {
       id: "perth-cbd",
@@ -676,6 +594,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Northbridge", "West Perth", "East Perth", "South Perth"],
       imageQuery: "perth cbd skyline swan river",
       route: "/areas/perth/suburbs/cbd",
+      services: createSuburbServices("Perth CBD"),
+      pageTexts: createSuburbPageTexts(),
     },
     fremantle: {
       id: "fremantle",
@@ -703,6 +623,8 @@ export const suburbs: SuburbsData = {
       ],
       imageQuery: "fremantle perth historic",
       route: "/areas/perth/suburbs/fremantle",
+      services: createSuburbServices("Fremantle"),
+      pageTexts: createSuburbPageTexts(),
     },
     joondalup: {
       id: "joondalup",
@@ -725,6 +647,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Currambine", "Iluka", "Burns Beach", "Kinross"],
       imageQuery: "joondalup perth business district",
       route: "/areas/perth/suburbs/joondalup",
+      services: createSuburbServices("Joondalup"),
+      pageTexts: createSuburbPageTexts(),
     },
     subiaco: {
       id: "subiaco",
@@ -747,6 +671,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["West Perth", "Shenton Park", "Daglish", "Nedlands"],
       imageQuery: "subiaco perth rokeby road",
       route: "/areas/perth/suburbs/subiaco",
+      services: createSuburbServices("Subiaco"),
+      pageTexts: createSuburbPageTexts(),
     },
     mandurah: {
       id: "mandurah",
@@ -769,6 +695,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["Halls Head", "Dawesville", "Greenfields", "Falcon"],
       imageQuery: "mandurah perth waterfront canals",
       route: "/areas/perth/suburbs/mandurah",
+      services: createSuburbServices("Mandurah"),
+      pageTexts: createSuburbPageTexts(),
     },
     rockingham: {
       id: "rockingham",
@@ -796,6 +724,8 @@ export const suburbs: SuburbsData = {
       ],
       imageQuery: "rockingham perth beach coastal",
       route: "/areas/perth/suburbs/rockingham",
+      services: createSuburbServices("Rockingham"),
+      pageTexts: createSuburbPageTexts(),
     },
     "adelaide-cbd": {
       id: "adelaide-cbd",
@@ -818,6 +748,8 @@ export const suburbs: SuburbsData = {
       nearbySuburbs: ["North Adelaide", "Parklands", "Kent Town", "Thebarton"],
       imageQuery: "adelaide cbd heritage architecture",
       route: "/areas/adelaide/suburbs/cbd",
+      services: createSuburbServices("Adelaide CBD"),
+      pageTexts: createSuburbPageTexts(),
     },
     glenelg: {
       id: "glenelg",
@@ -845,15 +777,15 @@ export const suburbs: SuburbsData = {
       ],
       imageQuery: "glenelg adelaide beach jetty",
       route: "/areas/adelaide/suburbs/glenelg",
+      services: createSuburbServices("Glenelg"),
+      pageTexts: createSuburbPageTexts(),
     },
   },
   allIds: [
     "sydney-cbd",
-    "parramatta",
     "bondi",
     "manly",
     "chatswood",
-    "penrith",
     "melbourne-cbd",
     "south-yarra",
     "brighton",

@@ -1,23 +1,5 @@
-import PerthSuburbPage from "./PerthSuburbPage";
+import SuburbPageTemplate from "@/components/SuburbPageTemplate";
 
 export default function SubiacoPage() {
-  return (
-    <PerthSuburbPage
-      suburb="Subiaco"
-      description="Live in one of Perth's most prestigious inner suburbs. Subiaco combines heritage charm with modern sophistication, offering excellent dining, shopping, and proximity to the city."
-      medianPrice="$850K"
-      growth="+4.8%"
-      population="19,000"
-      features={[
-        "Prestigious inner Perth location",
-        "Heritage character homes",
-        "Subiaco Oval and sports precinct",
-        "Excellent dining and shopping",
-        "Close to King's Park",
-        "Strong capital growth history",
-      ]}
-      nearbySuburbs={["Daglish", "Shenton Park", "Crawley", "Nedlands"]}
-      imageQuery="subiaco perth heritage"
-    />
-  );
+  return <SuburbPageTemplate suburbId="subiaco" />;
 }

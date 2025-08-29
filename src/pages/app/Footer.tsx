@@ -118,22 +118,6 @@ export default function Footer() {
                   Adelaide
                 </a>
               </li>
-              <li>
-                <a
-                  href="#areas/penrith"
-                  className="hover:text-white transition-colors"
-                >
-                  Penrith
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#areas/parramatta"
-                  className="hover:text-white transition-colors"
-                >
-                  Parramatta
-                </a>
-              </li>
             </ul>
           </div>
 

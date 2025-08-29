@@ -1,28 +1,5 @@
-import MelbourneSuburbPage from "./MelbourneSuburbPage";
+import SuburbPageTemplate from "@/components/SuburbPageTemplate";
 
 export default function StKildaPage() {
-  return (
-    <MelbourneSuburbPage
-      suburb="St Kilda"
-      description="Embrace Melbourne's iconic beachside bohemian culture. St Kilda offers vibrant nightlife, beautiful beaches, and eclectic arts scene with strong rental market appeal."
-      medianPrice="$850K"
-      growth="+3.9%"
-      population="19,000"
-      features={[
-        "Iconic beachside location",
-        "Vibrant nightlife and entertainment",
-        "Acland Street dining precinct",
-        "Luna Park and St Kilda Pier",
-        "Strong arts and cultural scene",
-        "Excellent rental market",
-      ]}
-      nearbySuburbs={[
-        "South Melbourne",
-        "Port Melbourne",
-        "Prahran",
-        "Windsor",
-      ]}
-      imageQuery="st kilda melbourne beach pier"
-    />
-  );
+  return <SuburbPageTemplate suburbId="st-kilda" />;
 }

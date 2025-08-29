@@ -1,38 +1,26 @@
 import React, { lazy } from "react";
-import { Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { areas, suburbs } from "@/constants/common";
 
-/**
- * RouteFactory Component
- *
- * This factory component dynamically generates React Router routes for all areas and suburbs
- * based on the data structure defined in @/constants/common.ts. This eliminates the need
- * to manually maintain route definitions and ensures all areas and suburbs from the data
- * constants are automatically routed.
- *
- * Benefits:
- * - Automatically syncs routes with data constants
- * - Reduces manual maintenance of route definitions
- * - Enables lazy loading of components for better performance
- * - Provides centralized route management
- */
+// Pages
+import Home from "@/pages/home";
+import About from "@/pages/about";
+import Contact from "@/pages/contact";
+import Calculator from "@/pages/calculator";
+
+// Service Pages
+import HomeLoansPage from "@/pages/services/home-loans";
+import PersonalFinancePage from "@/pages/services/personal-finance";
+import CommercialFinancePage from "@/pages/services/commercial-finance";
 
 // Lazy load components for better performance and code splitting
 const SydneyPage = lazy(() => import("@/pages/areas/sydney"));
 const MelbournePage = lazy(() => import("@/pages/areas/melbourne"));
 const PerthPage = lazy(() => import("@/pages/areas/perth"));
 const AdelaidePage = lazy(() => import("@/pages/areas/adelaide"));
-const PenrithAreaPage = lazy(() => import("@/pages/areas/penrith"));
-const ParramattaAreaPage = lazy(() => import("@/pages/areas/parramatta"));
 
 // Sydney Suburb Pages
 const SydneyCBDPage = lazy(() => import("@/pages/areas/sydney/suburbs/cbd"));
-const SydneyParramattaPage = lazy(
-  () => import("@/pages/areas/sydney/suburbs/parramatta")
-);
-const SydneyPenrithPage = lazy(
-  () => import("@/pages/areas/sydney/suburbs/penrith")
-);
 const BondiPage = lazy(() => import("@/pages/areas/sydney/suburbs/bondi"));
 const ManlyPage = lazy(() => import("@/pages/areas/sydney/suburbs/manly"));
 const ChatswoodPage = lazy(
@@ -87,15 +75,11 @@ const areaComponents: Record<string, React.ComponentType> = {
   melbourne: MelbournePage,
   perth: PerthPage,
   adelaide: AdelaidePage,
-  penrith: PenrithAreaPage,
-  parramatta: ParramattaAreaPage,
 };
 
 // Component mapping for suburbs - maps suburb IDs to their respective page components
 const suburbComponents: Record<string, React.ComponentType> = {
   "sydney-cbd": SydneyCBDPage,
-  parramatta: SydneyParramattaPage,
-  penrith: SydneyPenrithPage,
   bondi: BondiPage,
   manly: ManlyPage,
   chatswood: ChatswoodPage,
@@ -170,10 +154,34 @@ export const generateSuburbRoutes = (): React.ReactElement[] => {
  */
 export const RouteFactory: React.FC = () => {
   return (
-    <>
+    <Routes>
+      {/* Home routes */}
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+
+      {/* Service routes */}
+      <Route path="/services" element={<Home />} />
+      <Route path="/services/home-loans" element={<HomeLoansPage />} />
+      <Route
+        path="/services/personal-finance"
+        element={<PersonalFinancePage />}
+      />
+      <Route
+        path="/services/commercial-finance"
+        element={<CommercialFinancePage />}
+      />
+
+      {/* Dynamically generated area and suburb routes */}
       {generateAreaRoutes()}
       {generateSuburbRoutes()}
-    </>
+
+      {/* Tool routes */}
+      <Route path="/calculator" element={<Calculator />} />
+
+      {/* About and Contact routes */}
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+    </Routes>
   );
 };
 

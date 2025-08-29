@@ -1,23 +1,5 @@
-import PerthSuburbPage from "./PerthSuburbPage";
+import SuburbPageTemplate from "@/components/SuburbPageTemplate";
 
 export default function JoondalupPage() {
-  return (
-    <PerthSuburbPage
-      suburb="Joondalup"
-      description="Experience modern coastal living in Perth's northern hub. Joondalup offers contemporary amenities, excellent education facilities, and easy access to beautiful beaches with strong family appeal."
-      medianPrice="$580K"
-      growth="+3.9%"
-      population="66,000"
-      features={[
-        "Major northern suburbs hub",
-        "Modern shopping and dining",
-        "Edith Cowan University campus",
-        "Close to pristine beaches",
-        "Excellent family amenities",
-        "Growing business district",
-      ]}
-      nearbySuburbs={["Currambine", "Kinross", "Burns Beach", "Mindarie"]}
-      imageQuery="joondalup perth modern"
-    />
-  );
+  return <SuburbPageTemplate suburbId="joondalup" />;
 }

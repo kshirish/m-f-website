@@ -11,56 +11,35 @@ import { Badge } from "@/components/badge";
 import {
   MapPin,
   Phone,
-  Clock,
   Users,
   Home,
-  Building,
-  Star,
   CheckCircle,
   ArrowRight,
   TrendingUp,
   DollarSign,
 } from "lucide-react";
+import { getSuburbById, getAreaById } from "@/constants/common";
+import { useNavigate } from "react-router-dom";
 
-interface SydneySuburbPageProps {
-  suburb: string;
-  description: string;
-  medianPrice: string;
-  growth: string;
-  population: string;
-  features: string[];
-  nearbySuburbs: string[];
-  imageQuery: string;
+interface SuburbPageTemplateProps {
+  suburbId: string;
 }
 
-export default function SydneySuburbPage({
-  suburb,
-  description,
-  medianPrice,
-  growth,
-  population,
-  features,
-  nearbySuburbs,
-  imageQuery,
-}: SydneySuburbPageProps) {
-  const services = [
-    {
-      title: "First Home Buyer Loans",
-      description: `Special rates for first-time buyers in ${suburb}`,
-    },
-    {
-      title: "Investment Property Loans",
-      description: `Capitalize on ${suburb}'s rental market potential`,
-    },
-    {
-      title: "Refinancing",
-      description: `Switch to better rates for your ${suburb} property`,
-    },
-    {
-      title: "Property Valuation",
-      description: `Free property valuations for ${suburb} homes`,
-    },
-  ];
+export default function SuburbPageTemplate({
+  suburbId,
+}: SuburbPageTemplateProps) {
+  const navigate = useNavigate();
+
+  // Get suburb and area data from constants
+  const suburbData = getSuburbById(suburbId);
+  if (!suburbData) {
+    return <div>Suburb not found</div>;
+  }
+
+  const areaData = getAreaById(suburbData.areaId);
+  if (!areaData) {
+    return <div>Area not found</div>;
+  }
 
   const scrollToContact = () => {
     if (
@@ -85,14 +64,60 @@ export default function SydneySuburbPage({
     }
   };
 
+  // Get suburb-specific texts with fallbacks
+  const texts = suburbData.pageTexts || {
+    heroSubtitle: "Home Loans",
+    primaryCTAButton: "Get {suburb} Quote",
+    secondaryCTAButton: "Call Our Team",
+    marketInsightsTitle: "{suburb} Market Insights",
+    marketInsightsSubtitle: "Current market data for {suburb}",
+    medianPriceLabel: "Median House Price",
+    growthLabel: "Annual Growth",
+    populationLabel: "Population",
+    featuresTitle: "Why Choose {suburb}?",
+    featuresSubtitle: "What makes {suburb} a great place to live",
+    servicesTitle: "{suburb} Finance Services",
+    servicesSubtitle: "Specialized lending solutions for {suburb} residents",
+    servicesCTAButton: "Get {suburb} Quote",
+    nearbyAreasTitle: "Nearby {area} Areas",
+    nearbyAreasSubtitle: "We also serve these surrounding areas",
+    finalCTATitle: "Ready to Buy in {suburb}?",
+    finalCTADescription:
+      "Our {suburb} specialists are here to guide you through every step of the home buying process.",
+    finalPrimaryCTA: "Start Your {suburb} Application",
+    finalSecondaryCTA: "Contact Our {suburb} Team",
+  };
+
+  // Get services with fallbacks
+  const services = suburbData.services || [
+    {
+      title: "First Home Buyer Loans",
+      description: `Special rates for first-time buyers in ${suburbData.name}`,
+    },
+    {
+      title: "Investment Property Loans",
+      description: `Capitalize on ${suburbData.name}'s rental market potential`,
+    },
+    {
+      title: "Refinancing",
+      description: `Switch to better rates for your ${suburbData.name} property`,
+    },
+    {
+      title: "Property Valuation",
+      description: `Free property valuations for ${suburbData.name} homes`,
+    },
+  ];
+
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-blue-900 via-purple-900 to-indigo-800 text-white overflow-hidden">
+      <section
+        className={`relative py-20 bg-gradient-to-br ${areaData.gradient} text-white overflow-hidden`}
+      >
         <div className="absolute inset-0">
           <ImageWithFallback
             src={`https://images.unsplash.com/photo-1564013799919-ab600027ffc6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080`}
-            alt={`${suburb} area`}
+            alt={`${suburbData.name} area`}
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/60"></div>
@@ -102,14 +127,16 @@ export default function SydneySuburbPage({
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white hover:bg-white/30">
               <MapPin className="w-4 h-4 mr-2" />
-              {suburb}, Sydney NSW
+              {suburbData.name}, {areaData.name} {areaData.state}
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              {suburb}
-              <span className="block text-yellow-300">Home Loans</span>
+              {suburbData.name}
+              <span className="block text-yellow-300">
+                {texts.heroSubtitle}
+              </span>
             </h1>
             <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              {description}
+              {suburbData.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -117,7 +144,7 @@ export default function SydneySuburbPage({
                 className="bg-white text-blue-900 hover:bg-gray-100 px-8"
                 onClick={scrollToContact}
               >
-                Get {suburb} Quote
+                {texts.primaryCTAButton.replace("{suburb}", suburbData.name)}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
               <Button
@@ -127,7 +154,7 @@ export default function SydneySuburbPage({
                 onClick={scrollToContact}
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call Our Team
+                {texts.secondaryCTAButton}
               </Button>
             </div>
           </div>
@@ -139,10 +166,13 @@ export default function SydneySuburbPage({
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {suburb} Market Insights
+              {texts.marketInsightsTitle.replace("{suburb}", suburbData.name)}
             </h2>
             <p className="text-xl text-gray-600">
-              Current market data for {suburb}
+              {texts.marketInsightsSubtitle.replace(
+                "{suburb}",
+                suburbData.name
+              )}
             </p>
           </div>
 
@@ -153,9 +183,11 @@ export default function SydneySuburbPage({
                   <DollarSign className="w-6 h-6 text-blue-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {medianPrice}
+                  {suburbData.medianPrice}
                 </div>
-                <div className="text-sm text-gray-600">Median House Price</div>
+                <div className="text-sm text-gray-600">
+                  {texts.medianPriceLabel}
+                </div>
               </CardContent>
             </Card>
 
@@ -165,9 +197,9 @@ export default function SydneySuburbPage({
                   <TrendingUp className="w-6 h-6 text-green-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {growth}
+                  {suburbData.growth}
                 </div>
-                <div className="text-sm text-gray-600">Annual Growth</div>
+                <div className="text-sm text-gray-600">{texts.growthLabel}</div>
               </CardContent>
             </Card>
 
@@ -177,9 +209,11 @@ export default function SydneySuburbPage({
                   <Users className="w-6 h-6 text-purple-600" />
                 </div>
                 <div className="text-2xl font-bold text-gray-900 mb-1">
-                  {population}
+                  {suburbData.population}
                 </div>
-                <div className="text-sm text-gray-600">Population</div>
+                <div className="text-sm text-gray-600">
+                  {texts.populationLabel}
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -191,15 +225,15 @@ export default function SydneySuburbPage({
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Why Choose {suburb}?
+              {texts.featuresTitle.replace("{suburb}", suburbData.name)}
             </h2>
             <p className="text-xl text-gray-600">
-              What makes {suburb} a great place to live
+              {texts.featuresSubtitle.replace("{suburb}", suburbData.name)}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, index) => (
+            {suburbData.features.map((feature, index) => (
               <Card
                 key={index}
                 className="p-6 hover:shadow-lg transition-shadow"
@@ -219,10 +253,10 @@ export default function SydneySuburbPage({
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {suburb} Finance Services
+              {texts.servicesTitle.replace("{suburb}", suburbData.name)}
             </h2>
             <p className="text-xl text-gray-600">
-              Specialized lending solutions for {suburb} residents
+              {texts.servicesSubtitle.replace("{suburb}", suburbData.name)}
             </p>
           </div>
 
@@ -244,7 +278,10 @@ export default function SydneySuburbPage({
                     className="w-full"
                     onClick={scrollToContact}
                   >
-                    Get {suburb} Quote
+                    {texts.servicesCTAButton.replace(
+                      "{suburb}",
+                      suburbData.name
+                    )}
                   </Button>
                 </CardContent>
               </Card>
@@ -258,29 +295,22 @@ export default function SydneySuburbPage({
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Nearby Sydney Areas
+              {texts.nearbyAreasTitle.replace("{area}", areaData.name)}
             </h2>
-            <p className="text-xl text-gray-600">
-              We also serve these surrounding areas
-            </p>
+            <p className="text-xl text-gray-600">{texts.nearbyAreasSubtitle}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {nearbySuburbs.map((nearbySuburb, index) => (
+            {suburbData.nearbySuburbs.map((nearbySuburb, index) => (
               <Card
                 key={index}
                 className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50 cursor-pointer"
                 onClick={() => {
-                  const suburbRoutes: { [key: string]: string } = {
-                    "Sydney CBD": "#areas/sydney/cbd",
-                    Parramatta: "#areas/sydney/parramatta",
-                    Penrith: "#areas/sydney/penrith",
-                    Bondi: "#areas/sydney/bondi",
-                    Manly: "#areas/sydney/manly",
-                    Chatswood: "#areas/sydney/chatswood",
-                  };
-                  window.location.hash =
-                    suburbRoutes[nearbySuburb] || "#areas/sydney";
+                  // Convert suburb name to route (this logic will need to be improved later)
+                  const suburbRoute = nearbySuburb
+                    .toLowerCase()
+                    .replace(/\s+/g, "-");
+                  navigate(`/areas/${areaData.id}/suburbs/${suburbRoute}`);
                 }}
               >
                 <CardContent className="p-0">
@@ -294,14 +324,15 @@ export default function SydneySuburbPage({
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
+      <section
+        className={`py-20 bg-gradient-to-r ${areaData.gradient} text-white`}
+      >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Buy in {suburb}?
+            {texts.finalCTATitle.replace("{suburb}", suburbData.name)}
           </h2>
           <p className="text-xl mb-8 text-blue-100">
-            Our {suburb} specialists are here to guide you through every step of
-            the home buying process.
+            {texts.finalCTADescription.replace("{suburb}", suburbData.name)}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -309,7 +340,7 @@ export default function SydneySuburbPage({
               className="bg-white text-blue-700 hover:bg-gray-100 px-8"
               onClick={scrollToContact}
             >
-              Start Your {suburb} Application
+              {texts.finalPrimaryCTA.replace("{suburb}", suburbData.name)}
             </Button>
             <Button
               size="lg"
@@ -317,7 +348,7 @@ export default function SydneySuburbPage({
               className="border-white text-gray-900 hover:bg-white/10 px-8"
               onClick={scrollToContact}
             >
-              Contact Our {suburb} Team
+              {texts.finalSecondaryCTA.replace("{suburb}", suburbData.name)}
             </Button>
           </div>
         </div>

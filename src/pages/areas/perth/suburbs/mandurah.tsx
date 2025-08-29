@@ -1,23 +1,5 @@
-import PerthSuburbPage from "./PerthSuburbPage";
+import SuburbPageTemplate from "@/components/SuburbPageTemplate";
 
 export default function MandurahPage() {
-  return (
-    <PerthSuburbPage
-      suburb="Mandurah"
-      description="Enjoy relaxed coastal living in Western Australia's premier waterfront city. Mandurah offers beautiful waterways, recreational boating, and affordable family lifestyle with growing popularity."
-      medianPrice="$480K"
-      growth="+6.2%"
-      population="84,000"
-      features={[
-        "Beautiful waterways and canals",
-        "Popular retirement destination",
-        "Affordable family living",
-        "Excellent fishing and boating",
-        "Growing tourism industry",
-        "Strong rental market potential",
-      ]}
-      nearbySuburbs={["Halls Head", "Greenfields", "Dudley Park", "Falcon"]}
-      imageQuery="mandurah waterways perth"
-    />
-  );
+  return <SuburbPageTemplate suburbId="mandurah" />;
 }

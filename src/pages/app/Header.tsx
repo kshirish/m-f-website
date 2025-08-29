@@ -137,12 +137,6 @@ export default function Header() {
                       Sydney CBD
                     </Link>
                     <Link
-                      to="/areas/sydney/suburbs/parramatta"
-                      className="block px-2 py-1 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors"
-                    >
-                      Parramatta
-                    </Link>
-                    <Link
                       to="/areas/sydney/suburbs/bondi"
                       className="block px-2 py-1 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-md transition-colors"
                     >

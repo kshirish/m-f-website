@@ -9,8 +9,6 @@ export default function ServiceAreas() {
     { name: "Sydney", isMain: true },
     { name: "Perth", isMain: false },
     { name: "Melbourne", isMain: false },
-    { name: "Penrith", isMain: false },
-    { name: "Parramatta", isMain: false },
     { name: "Adelaide", isMain: false },
   ];
 
@@ -45,8 +43,6 @@ export default function ServiceAreas() {
                       Melbourne: "/areas/melbourne",
                       Perth: "/areas/perth",
                       Adelaide: "/areas/adelaide",
-                      Penrith: "/areas/penrith",
-                      Parramatta: "/areas/parramatta",
                     };
                     navigate(areaLinks[area.name] || "/areas");
                   }}
