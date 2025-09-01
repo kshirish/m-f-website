@@ -69,7 +69,7 @@ export const areas: AreasData = {
       description:
         "Based in the heart of Sydney, we've been helping locals secure their dream homes and investment properties across all Sydney suburbs for over 15 years.",
       heroImage:
-        "https://images.unsplash.com/photo-1717883560409-14adc1074f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+        "https://images.unsplash.com/photo-1717883560409-14adc1074f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=2070&utm_source=figma&utm_medium=referral",
       gradient: "from-blue-900 via-purple-900 to-pink-800",
       accentColor: "blue",
       phone: "Call Our Sydney Office",
@@ -120,8 +120,8 @@ export const areas: AreasData = {
       ],
       route: "/areas/sydney",
       office: {
-        address: "Level 5, 123 George Street, Sydney NSW 2000",
-        phone: "(02) 9000 0000",
+        address: "NSW 2749, AUSTRALIA",
+        phone: "0402 742 493",
         hours: "Mon-Fri: 9AM-6PM | Sat: 9AM-2PM",
       },
       marketInsights: {
@@ -158,10 +158,10 @@ export const areas: AreasData = {
       description:
         "Your trusted mortgage brokers serving Melbourne and surrounding suburbs. We understand Victoria's property market and help you secure the best home loan deals across Melbourne's diverse neighborhoods.",
       heroImage:
-        "https://images.unsplash.com/photo-1545044846-351ba102b6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        "https://images.unsplash.com/photo-1545044846-351ba102b6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-purple-900 via-indigo-900 to-purple-800",
       accentColor: "purple",
-      phone: "(03) 9000 0000",
+      phone: "0402 742 493",
       stats: {
         clients: "400+",
         loans: "$200M+",
@@ -218,10 +218,10 @@ export const areas: AreasData = {
       description:
         "Expert mortgage brokers serving Perth and WA suburbs. We understand the unique Western Australian property market and help you secure competitive home loan rates across Perth's growing regions.",
       heroImage:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        "https://images.unsplash.com/photo-1580014942344-ce423d2b885a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-orange-900 via-red-900 to-pink-800",
       accentColor: "orange",
-      phone: "(08) 9000 0000",
+      phone: "0402 742 493",
       stats: {
         clients: "300+",
         loans: "$180M+",
@@ -278,10 +278,10 @@ export const areas: AreasData = {
       description:
         "Professional mortgage brokers serving Adelaide and surrounding SA regions. We help you navigate South Australia's property market with expert local knowledge and competitive home loan solutions.",
       heroImage:
-        "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+        "https://images.unsplash.com/photo-1584417259164-370553879731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-green-900 via-teal-900 to-blue-800",
       accentColor: "green",
-      phone: "(08) 8000 0000",
+      phone: "0402 742 493",
       stats: {
         clients: "250+",
         loans: "$120M+",

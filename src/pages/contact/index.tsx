@@ -38,8 +38,12 @@ export default function Contact() {
                   <Phone className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <p className="text-gray-300">1300 MY CHOICE</p>
-                    <p className="text-gray-300">(1300 692 464)</p>
+                    <a
+                      href="tel:0402742493"
+                      className="text-gray-300 hover:text-blue-400 transition-colors"
+                    >
+                      0402 742 493
+                    </a>
                   </div>
                 </div>
 
@@ -47,21 +51,20 @@ export default function Contact() {
                   <Mail className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <p className="text-gray-300">
-                      info@mychoicemortgage.com.au
-                    </p>
+                    <a
+                      href="mailto:info@mychoicemortgagefinance.com.au"
+                      className="text-gray-300 hover:text-blue-400 transition-colors"
+                    >
+                      info@mychoicemortgagefinance.com.au
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
                   <MapPin className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                   <div>
-                    <p className="font-medium">Head Office</p>
-                    <p className="text-gray-300">
-                      Level 5, 123 George Street
-                      <br />
-                      Sydney NSW 2000
-                    </p>
+                    <p className="font-medium">Address</p>
+                    <p className="text-gray-300">NSW 2749, AUSTRALIA</p>
                   </div>
                 </div>
 
@@ -242,11 +245,25 @@ export default function Contact() {
               <p className="text-blue-100 text-sm mb-4">
                 Speak with an expert immediately
               </p>
-              <p className="font-bold">1300 MY CHOICE</p>
+              <a
+                href="tel:0402742493"
+                className="font-bold hover:text-blue-200 transition-colors"
+              >
+                0402 742 493
+              </a>
             </CardContent>
           </Card>
 
-          <Card className="bg-purple-600 text-white border-0 p-6 text-center hover:bg-purple-700 transition-colors cursor-pointer">
+          <Card
+            className="bg-purple-600 text-white border-0 p-6 text-center hover:bg-purple-700 transition-colors cursor-pointer"
+            onClick={() => {
+              // Open chat widget or redirect to chat service
+              window.open(
+                "mailto:info@mychoicemortgagefinance.com.au?subject=Live Chat Request",
+                "_blank"
+              );
+            }}
+          >
             <CardContent className="p-0">
               <MessageCircle className="w-8 h-8 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Live Chat</h3>
@@ -257,7 +274,13 @@ export default function Contact() {
             </CardContent>
           </Card>
 
-          <Card className="bg-green-600 text-white border-0 p-6 text-center hover:bg-green-700 transition-colors cursor-pointer">
+          <Card
+            className="bg-green-600 text-white border-0 p-6 text-center hover:bg-green-700 transition-colors cursor-pointer"
+            onClick={() => {
+              // Open calendar booking or phone call
+              window.location.href = "tel:0402742493";
+            }}
+          >
             <CardContent className="p-0">
               <Clock className="w-8 h-8 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Book Appointment</h3>

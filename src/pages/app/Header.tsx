@@ -33,7 +33,10 @@ export default function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link
+            to="/"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+          >
             <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <span className="text-white text-sm font-bold">MC</span>
             </div>
@@ -41,7 +44,7 @@ export default function Header() {
               <h1 className="text-lg font-semibold text-gray-900">My Choice</h1>
               <p className="text-xs text-gray-600">Mortgage & Finance</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -177,7 +180,12 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone className="w-4 h-4" />
-              <span>1300 MY CHOICE</span>
+              <a
+                href="tel:0402742493"
+                className="hover:text-blue-600 transition-colors"
+              >
+                0402 742 493
+              </a>
             </div>
             <Button onClick={() => scrollToSection("contact")}>
               Get Quote
@@ -272,7 +280,12 @@ export default function Header() {
               </button>
               <div className="flex items-center space-x-2 text-sm text-gray-600 pt-2">
                 <Phone className="w-4 h-4" />
-                <span>1300 MY CHOICE</span>
+                <a
+                  href="tel:0402742493"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  0402 742 493
+                </a>
               </div>
               <Button
                 className="w-fit"

@@ -137,18 +137,10 @@ export default function PersonalFinancePage() {
                 size="lg"
                 variant="outline"
                 className="border-white text-gray-900 hover:bg-white/10 px-8"
-                onClick={() => {
-                  window.location.hash = "home";
-                  setTimeout(() => {
-                    const contactSection = document.getElementById("contact");
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }, 100);
-                }}
+                onClick={() => (window.location.href = "tel:0402742493")}
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call 1300 MY CHOICE
+                Call 0402 742 493
               </Button>
             </div>
           </div>

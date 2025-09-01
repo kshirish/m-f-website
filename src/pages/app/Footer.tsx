@@ -127,17 +127,26 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
-                <span>1300 MY CHOICE</span>
+                <a
+                  href="tel:0402742493"
+                  className="hover:text-white transition-colors"
+                >
+                  0402 742 493
+                </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="w-4 h-4" />
-                <span>info@mychoicemortgage.com.au</span>
+                <a
+                  href="mailto:info@mychoicemortgagefinance.com.au"
+                  className="hover:text-white transition-colors"
+                >
+                  info@mychoicemortgagefinance.com.au
+                </a>
               </div>
               <div className="flex items-start space-x-2">
                 <MapPin className="w-4 h-4 mt-0.5" />
                 <div>
-                  <p>Level 5, 123 George Street</p>
-                  <p>Sydney NSW 2000</p>
+                  <p>NSW 2749, AUSTRALIA</p>
                 </div>
               </div>
             </div>

@@ -109,24 +109,24 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/20 text-white hover:bg-white/30">
+            <Badge className="mb-6 bg-white/90 text-gray-800 hover:bg-white border border-white/20">
               <MapPin className="w-4 h-4 mr-2" />
               {areaData.tagline}
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               {areaData.displayName.split(" ").slice(0, -2).join(" ")}
-              <span className="block text-yellow-300">
+              <span className="block text-orange-400">
                 {areaData.displayName.split(" ").slice(-2).join(" ")}
               </span>
             </h1>
-            <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+            <p className="text-xl mb-8 text-gray-100 max-w-3xl mx-auto">
               {areaData.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
                 onClick={scrollToContact}
-                className="bg-white text-gray-900 hover:bg-gray-100 px-8"
+                className="bg-white text-gray-900 hover:bg-gray-50 px-8 font-semibold"
               >
                 Get {areaData.name} Home Loan Quote
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -134,7 +134,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 px-8"
+                className="border-white text-white hover:bg-white hover:text-gray-900 px-8 font-semibold"
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {areaData.phone}
@@ -299,7 +299,21 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <p className="text-gray-600 mb-4">
               Don't see your suburb? We serve all of Greater {areaData.name}!
             </p>
-            <Button variant="outline">Contact Us About Your Area</Button>
+            <Button
+              variant="outline"
+              onClick={() => {
+                // Scroll to contact section
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({ behavior: "smooth" });
+                } else {
+                  // If no contact section on current page, navigate to home with contact focus
+                  window.location.href = "/#contact";
+                }
+              }}
+            >
+              Contact Us About Your Area
+            </Button>
           </div>
         </div>
       </section>

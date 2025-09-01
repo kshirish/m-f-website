@@ -70,8 +70,9 @@ export default function Hero() {
               size="lg"
               variant="outline"
               className="border-white text-gray-900 hover:bg-gray-100 px-8 py-4"
+              onClick={() => (window.location.href = "tel:0402742493")}
             >
-              Call Now: 1300 MY CHOICE
+              Call Now: 0402 742 493
             </Button>
           </div>
 

@@ -75,8 +75,14 @@ export default function ServiceAreas() {
               <div className="flex items-center space-x-3 text-gray-700">
                 <Phone className="w-5 h-5 text-blue-600" />
                 <span>
-                  Call us at <strong>1300 MY CHOICE</strong> for immediate
-                  assistance
+                  Call us at{" "}
+                  <a
+                    href="tel:0402742493"
+                    className="font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  >
+                    0402 742 493
+                  </a>{" "}
+                  for immediate assistance
                 </span>
               </div>
               <div className="flex items-center space-x-3 text-gray-700">

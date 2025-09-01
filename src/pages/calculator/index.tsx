@@ -20,7 +20,7 @@ import {
 import { Slider } from "@/components/slider";
 import { Badge } from "@/components/badge";
 import {
-  Calculator,
+  Calculator as CalculatorIcon,
   DollarSign,
   TrendingUp,
   Clock,
@@ -122,7 +122,7 @@ export default function Calculator() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <Badge className="mb-6 bg-white/20 text-white hover:bg-white/30">
-              <Calculator className="w-4 h-4 mr-2" />
+              <CalculatorIcon className="w-4 h-4 mr-2" />
               Free Calculator Tool
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -144,7 +144,7 @@ export default function Calculator() {
             <Card className="h-fit">
               <CardHeader>
                 <CardTitle className="flex items-center space-x-2">
-                  <Calculator className="w-5 h-5 text-blue-600" />
+                  <CalculatorIcon className="w-5 h-5 text-blue-600" />
                   <span>Loan Calculator</span>
                 </CardTitle>
                 <CardDescription>
@@ -361,7 +361,7 @@ export default function Calculator() {
               <Card className="text-center p-6">
                 <CardContent className="p-0">
                   <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Calculator className="w-6 h-6 text-blue-600" />
+                    <CalculatorIcon className="w-6 h-6 text-blue-600" />
                   </div>
                   <h3 className="font-semibold mb-2">Accurate Estimates</h3>
                   <p className="text-sm text-gray-600">
@@ -439,10 +439,10 @@ export default function Calculator() {
               size="lg"
               variant="outline"
               className="border-white text-gray-900 hover:bg-white/10 px-8"
-              onClick={scrollToContact}
+              onClick={() => (window.location.href = "tel:0402742493")}
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call 1300 MY CHOICE
+              Call 0402 742 493
             </Button>
           </div>
         </div>
