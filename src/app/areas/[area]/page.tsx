@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import AreaPageTemplate from "@/components/AreaPageTemplate";
+import AreaPageTemplate from "@/ui/AreaPageTemplate";
 import { getAreaById, getAllAreas } from "@/constants/common";
 
 type Props = {

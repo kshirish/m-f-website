@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
+import { COMPANY_INFO, SERVICES, areas, suburbs } from "@/constants/common";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.mychoicemortgagefinance.com.au";
+  const baseUrl = COMPANY_INFO.website;
   const currentDate = new Date().toISOString();
 
   // Static pages
@@ -14,24 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 1.0,
     },
-    {
-      url: `${baseUrl}/services/home-loans`,
+    ...SERVICES.main.map((service) => ({
+      url: `${baseUrl}${service.href}`,
       lastModified: currentDate,
       changeFrequency: "monthly" as const,
       priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services/personal-finance`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/services/commercial-finance`,
-      lastModified: currentDate,
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
-    },
+    })),
     {
       url: `${baseUrl}/calculator`,
       lastModified: currentDate,
@@ -41,47 +30,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Area pages
-  const areas = ["sydney", "melbourne", "perth", "adelaide"];
-  const areaPages = areas.map((area) => ({
-    url: `${baseUrl}/areas/${area}`,
+  const areaPages = Object.keys(areas).map((areaSlug) => ({
+    url: `${baseUrl}/areas/${areaSlug}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   // Suburb pages
-  const suburbs = [
-    // Sydney
-    { area: "sydney", suburb: "sydney-cbd" },
-    { area: "sydney", suburb: "bondi" },
-    { area: "sydney", suburb: "manly" },
-    { area: "sydney", suburb: "chatswood" },
-
-    // Melbourne
-    { area: "melbourne", suburb: "melbourne-cbd" },
-    { area: "melbourne", suburb: "south-yarra" },
-    { area: "melbourne", suburb: "brighton" },
-    { area: "melbourne", suburb: "richmond" },
-    { area: "melbourne", suburb: "st-kilda" },
-    { area: "melbourne", suburb: "docklands" },
-
-    // Perth
-    { area: "perth", suburb: "fremantle" },
-    { area: "perth", suburb: "subiaco" },
-    { area: "perth", suburb: "joondalup" },
-    { area: "perth", suburb: "rockingham" },
-    { area: "perth", suburb: "mandurah" },
-
-    // Adelaide
-    { area: "adelaide", suburb: "glenelg" },
-  ];
-
-  const suburbPages = suburbs.map(({ area, suburb }) => ({
-    url: `${baseUrl}/areas/${area}/${suburb}`,
-    lastModified: currentDate,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
-  }));
+  const suburbPages = Object.entries(suburbs).map(
+    ([suburbSlug, suburbData]) => ({
+      url: `${baseUrl}/areas/${suburbData.areaSlug}/suburbs/${suburbSlug}`,
+      lastModified: currentDate,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })
+  );
 
   return [...staticPages, ...areaPages, ...suburbPages];
 }

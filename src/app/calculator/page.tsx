@@ -8,20 +8,21 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { Button } from "@/components/button";
-import { Input } from "@/components/input";
-import { Label } from "@/components/label";
+} from "@/ui/card";
+import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
+import { Label } from "@/ui/label";
+import { COMPANY_INFO } from "@/constants/common";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/select";
-import { Slider } from "@/components/slider";
-import { Badge } from "@/components/badge";
-import { scrollToContact } from "@/utils/scrollToContact";
+} from "@/ui/select";
+import { Slider } from "@/ui/slider";
+import { Badge } from "@/ui/badge";
+import { scrollToSection } from "@/utils/scrollToSection";
 import {
   Calculator as CalculatorIcon,
   DollarSign,
@@ -319,7 +320,7 @@ export default function CalculatorPage() {
                   <Button
                     className="w-full bg-blue-600 hover:bg-blue-700 text-white"
                     size="lg"
-                    onClick={scrollToContact}
+                    onClick={() => scrollToSection("contact")}
                   >
                     Apply for This Loan
                     <ArrowRight className="ml-2 w-4 h-4" />
@@ -327,7 +328,7 @@ export default function CalculatorPage() {
                   <Button
                     variant="ghost"
                     className="w-full text-blue-600 hover:bg-blue-50"
-                    onClick={scrollToContact}
+                    onClick={() => scrollToSection("contact")}
                   >
                     <Phone className="mr-2 w-4 h-4" />
                     Speak to a Broker
@@ -427,7 +428,7 @@ export default function CalculatorPage() {
             <Button
               size="lg"
               className="bg-blue-600 text-white hover:bg-blue-700 px-8"
-              onClick={scrollToContact}
+              onClick={() => scrollToSection("contact")}
             >
               Get Pre-Approved Now
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -436,10 +437,13 @@ export default function CalculatorPage() {
               size="lg"
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
-              onClick={() => (window.location.href = "tel:0402742493")}
+              onClick={() =>
+                (window.location.href = `tel:${COMPANY_INFO.phone}`)
+              }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call 0402 742 493
+              Call{" "}
+              {COMPANY_INFO.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}
             </Button>
           </div>
         </div>

@@ -1,5 +1,22 @@
 // TypeScript definitions for the common data structure
 
+export interface NavigationLink {
+  label: string;
+  href: string;
+}
+
+export interface NavigationDropdownItem extends NavigationLink {}
+
+export interface NavigationItem extends NavigationLink {
+  dropdown?: readonly NavigationDropdownItem[];
+  isScroll?: boolean;
+}
+
+export interface NavigationSection {
+  title: string;
+  links: NavigationLink[];
+}
+
 export interface AreaStats {
   clients: string;
   loans: string;
@@ -83,7 +100,6 @@ export interface Area {
   description: string;
   heroImage: string;
   gradient: string;
-  accentColor: string;
   phone: string;
   stats: AreaStats;
   statsLabels: AreaStatsLabels;

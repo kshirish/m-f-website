@@ -6,9 +6,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Button } from "@/components/button";
+} from "@/ui/card";
+import { ImageWithFallback } from "@/ui/ImageWithFallback";
+import { Button } from "@/ui/button";
 import {
   Home,
   CreditCard,

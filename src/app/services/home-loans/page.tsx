@@ -1,15 +1,15 @@
 "use client";
 
-import { Button } from "@/components/button";
+import { Button } from "@/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { Badge } from "@/components/badge";
-import { scrollToContact } from "@/utils/scrollToContact";
+} from "@/ui/card";
+import { Badge } from "@/ui/badge";
+import { scrollToSection } from "@/utils/scrollToSection";
 import {
   CheckCircle,
   Home,
@@ -20,6 +20,7 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
+import { COMPANY_INFO } from "@/constants/common";
 
 export default function HomeLoansPage() {
   const loanTypes = [
@@ -112,7 +113,7 @@ export default function HomeLoansPage() {
               <Button
                 size="lg"
                 className="bg-blue-600 text-white hover:bg-blue-700 px-8"
-                onClick={scrollToContact}
+                onClick={() => scrollToSection("contact")}
               >
                 Get Pre-Approved Now
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -121,10 +122,15 @@ export default function HomeLoansPage() {
                 size="lg"
                 variant="outline"
                 className="border-white hover:bg-white/10 px-8"
-                onClick={() => (window.location.href = "tel:0402742493")}
+                onClick={() =>
+                  (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                    /\s/g,
+                    ""
+                  )}`)
+                }
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call 0402 742 493
+                Call {COMPANY_INFO.phone}
               </Button>
             </div>
           </div>
@@ -168,7 +174,7 @@ export default function HomeLoansPage() {
                   <Button
                     className="w-full mt-6"
                     variant="outline"
-                    onClick={scrollToContact}
+                    onClick={() => scrollToSection("contact")}
                   >
                     Apply Now
                   </Button>
@@ -277,7 +283,7 @@ export default function HomeLoansPage() {
             <Button
               size="lg"
               className="bg-blue-600 text-white hover:bg-blue-700 px-8"
-              onClick={scrollToContact}
+              onClick={() => scrollToSection("contact")}
             >
               Start Your Application
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -286,10 +292,15 @@ export default function HomeLoansPage() {
               size="lg"
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
-              onClick={() => (window.location.href = "tel:0402742493")}
+              onClick={() =>
+                (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                  /\s/g,
+                  ""
+                )}`)
+              }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call 0402 742 493
+              Call {COMPANY_INFO.phone}
             </Button>
           </div>
         </div>

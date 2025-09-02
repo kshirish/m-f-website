@@ -1,10 +1,11 @@
 "use client";
 
-import { Button } from "@/components/button";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { Button } from "@/ui/button";
+import { ImageWithFallback } from "@/ui/ImageWithFallback";
 import { ArrowRight, Shield, Clock, Users, Calculator } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { scrollToContact } from "@/utils/scrollToContact";
+import { scrollToSection } from "@/utils/scrollToSection";
+import { COMPANY_INFO } from "@/constants/common";
 
 export default function Hero() {
   const router = useRouter();
@@ -49,7 +50,7 @@ export default function Hero() {
             <Button
               size="lg"
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4"
-              onClick={scrollToContact}
+              onClick={() => scrollToSection("contact")}
             >
               Get Free Quote
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -67,9 +68,14 @@ export default function Hero() {
               size="lg"
               variant="outline"
               className="border-white text-gray-900 hover:bg-gray-100 px-8 py-4"
-              onClick={() => (window.location.href = "tel:0402742493")}
+              onClick={() =>
+                (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                  /\s/g,
+                  ""
+                )}`)
+              }
             >
-              Call Now: 0402 742 493
+              Call Now: {COMPANY_INFO.phone}
             </Button>
           </div>
 

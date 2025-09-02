@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SuburbPageTemplate from "@/components/SuburbPageTemplate";
+import SuburbPageTemplate from "@/ui/SuburbPageTemplate";
 import { getSuburbById, getAllSuburbs, getAreaById } from "@/constants/common";
 
 type Props = {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: "en_AU",
     },
     alternates: {
-      canonical: `/areas/${areaId}/${suburbSlug}`,
+      canonical: `/areas/${areaId}/suburbs/${suburbSlug}`,
     },
   };
 }

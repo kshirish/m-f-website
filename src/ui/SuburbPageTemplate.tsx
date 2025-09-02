@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "@/components/button";
+import { Button } from "@/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Badge } from "@/components/badge";
-import { scrollToContact } from "@/utils/scrollToContact";
+} from "@/ui/card";
+import { ImageWithFallback } from "@/ui/ImageWithFallback";
+import { Badge } from "@/ui/badge";
+import { scrollToSection } from "@/utils/scrollToSection";
 import {
   MapPin,
   Phone,
@@ -122,8 +122,8 @@ export default function SuburbPageTemplate({
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-white text-blue-900 hover:bg-gray-100 px-8"
-                onClick={scrollToContact}
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+                onClick={() => scrollToSection("contact")}
               >
                 {texts.primaryCTAButton.replace("{suburb}", suburbData.name)}
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -132,7 +132,7 @@ export default function SuburbPageTemplate({
                 size="lg"
                 variant="outline"
                 className="border-white text-gray-900 hover:bg-white/10 px-8"
-                onClick={scrollToContact}
+                onClick={() => scrollToSection("contact")}
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {texts.secondaryCTAButton}
@@ -257,7 +257,7 @@ export default function SuburbPageTemplate({
                   <Button
                     variant="outline"
                     className="w-full"
-                    onClick={scrollToContact}
+                    onClick={() => scrollToSection("contact")}
                   >
                     {texts.servicesCTAButton.replace(
                       "{suburb}",
@@ -318,16 +318,17 @@ export default function SuburbPageTemplate({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-white text-blue-700 hover:bg-gray-100 px-8"
-              onClick={scrollToContact}
+              className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+              onClick={() => scrollToSection("contact")}
             >
-              {texts.finalPrimaryCTA.replace("{suburb}", suburbData.name)}
+              {texts.primaryCTAButton.replace("{suburb}", suburbData.name)}
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="border-white text-gray-900 hover:bg-white/10 px-8"
-              onClick={scrollToContact}
+              onClick={() => scrollToSection("contact")}
             >
               {texts.finalSecondaryCTA.replace("{suburb}", suburbData.name)}
             </Button>

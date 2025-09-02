@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/card";
-import { Button } from "@/components/button";
+import { Card, CardContent } from "@/ui/card";
+import { Button } from "@/ui/button";
 import { Award, Users, Clock, Shield, Star, TrendingUp } from "lucide-react";
 
 export default function About() {

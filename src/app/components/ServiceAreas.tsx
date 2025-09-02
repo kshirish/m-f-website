@@ -1,18 +1,18 @@
 "use client";
 
-import { Card, CardContent } from "@/components/card";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { Card, CardContent } from "@/ui/card";
+import { ImageWithFallback } from "@/ui/ImageWithFallback";
 import { MapPin, Phone, Clock } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { COMPANY_INFO, areas } from "@/constants/common";
 
 export default function ServiceAreas() {
   const router = useRouter();
-  const areas = [
-    { name: "Sydney", isMain: true },
-    { name: "Perth", isMain: false },
-    { name: "Melbourne", isMain: false },
-    { name: "Adelaide", isMain: false },
-  ];
+  const serviceAreas = Object.entries(areas).map(([slug, area]) => ({
+    name: area.name,
+    slug: slug,
+    isMain: slug === "sydney", // Sydney is the main headquarters
+  }));
 
   return (
     <section id="areas" className="py-20 bg-white">
@@ -31,7 +31,7 @@ export default function ServiceAreas() {
 
             {/* Areas Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-8">
-              {areas.map((area, index) => (
+              {serviceAreas.map((area, index) => (
                 <Card
                   key={index}
                   className={`p-4 text-center transition-all duration-300 hover:shadow-md cursor-pointer ${
@@ -40,13 +40,7 @@ export default function ServiceAreas() {
                       : "hover:bg-gray-50"
                   }`}
                   onClick={() => {
-                    const areaLinks: { [key: string]: string } = {
-                      Sydney: "/areas/sydney",
-                      Melbourne: "/areas/melbourne",
-                      Perth: "/areas/perth",
-                      Adelaide: "/areas/adelaide",
-                    };
-                    router.push(areaLinks[area.name] || "/areas");
+                    router.push(`/areas/${area.slug}`);
                   }}
                 >
                   <CardContent className="p-0">
@@ -79,10 +73,13 @@ export default function ServiceAreas() {
                 <span>
                   Call us at{" "}
                   <a
-                    href="tel:0402742493"
+                    href={`tel:${COMPANY_INFO.phone}`}
                     className="font-bold text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    0402 742 493
+                    {COMPANY_INFO.phone.replace(
+                      /(\d{4})(\d{3})(\d{3})/,
+                      "$1 $2 $3"
+                    )}
                   </a>{" "}
                   for immediate assistance
                 </span>
@@ -112,7 +109,7 @@ export default function ServiceAreas() {
               <CardContent className="p-0">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-600 mb-1">
-                    6+
+                    {serviceAreas.length}+
                   </div>
                   <div className="text-sm text-gray-600">Cities Served</div>
                 </div>

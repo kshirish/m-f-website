@@ -1,15 +1,16 @@
 "use client";
 
-import { Button } from "@/components/button";
+import { Button } from "@/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { Badge } from "@/components/badge";
-import { scrollToContact } from "@/utils/scrollToContact";
+} from "@/ui/card";
+import { Badge } from "@/ui/badge";
+import { scrollToSection } from "@/utils/scrollToSection";
+import { COMPANY_INFO } from "@/constants/common";
 import {
   CheckCircle,
   Building,
@@ -151,7 +152,7 @@ export default function CommercialFinancePage() {
               <Button
                 size="lg"
                 className="bg-blue-600 text-white hover:bg-blue-700 px-8"
-                onClick={scrollToContact}
+                onClick={() => scrollToSection("contact")}
               >
                 Get Business Quote
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -160,10 +161,16 @@ export default function CommercialFinancePage() {
                 size="lg"
                 variant="outline"
                 className="border-white hover:bg-white/10 px-8"
-                onClick={() => (window.location.href = "tel:0402742493")}
+                onClick={() =>
+                  (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                }
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call 0402 742 493
+                Call{" "}
+                {COMPANY_INFO.phone.replace(
+                  /(\d{4})(\d{3})(\d{3})/,
+                  "$1 $2 $3"
+                )}
               </Button>
             </div>
           </div>
@@ -216,7 +223,7 @@ export default function CommercialFinancePage() {
                   </ul>
                   <Button
                     className="w-full border bg-white text-gray-900 hover:bg-gray-100"
-                    onClick={scrollToContact}
+                    onClick={() => scrollToSection("contact")}
                   >
                     Get Quote
                   </Button>
@@ -323,7 +330,7 @@ export default function CommercialFinancePage() {
                 <Button
                   size="lg"
                   className="bg-white text-gray-900 hover:bg-gray-100"
-                  onClick={scrollToContact}
+                  onClick={() => scrollToSection("contact")}
                 >
                   Get Equipment Finance Quote
                   <ArrowRight className="ml-2 w-5 h-5" />
@@ -449,7 +456,7 @@ export default function CommercialFinancePage() {
             <Button
               size="lg"
               className="bg-blue-600 text-white hover:bg-blue-700 px-8"
-              onClick={scrollToContact}
+              onClick={() => scrollToSection("contact")}
             >
               Get Commercial Quote
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -458,10 +465,13 @@ export default function CommercialFinancePage() {
               size="lg"
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
-              onClick={() => (window.location.href = "tel:0402742493")}
+              onClick={() =>
+                (window.location.href = `tel:${COMPANY_INFO.phone}`)
+              }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call 0402 742 493
+              Call{" "}
+              {COMPANY_INFO.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}
             </Button>
           </div>
         </div>

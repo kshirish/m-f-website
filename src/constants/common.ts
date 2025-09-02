@@ -8,7 +8,52 @@ import type {
   SuburbsData,
   SuburbService,
   SuburbPageTexts,
+  NavigationItem,
+  NavigationSection,
 } from "./types";
+
+// Company Information
+export const COMPANY_INFO = {
+  name: "My Choice",
+  fullName: "My Choice Mortgage & Finance",
+  tagline: "Mortgage & Finance",
+  description:
+    "Expert mortgage brokers providing home loans, personal finance, and commercial finance solutions across Australia.",
+  phone: "0402 742 493",
+  email: "info@mychoicemortgagefinance.com.au",
+  address: "NSW 2749, AUSTRALIA",
+  website: "https://www.mychoicemortgagefinance.com.au",
+  logo: "/logo.png",
+  established: "2009",
+  creditRepNumber: "123456",
+} as const;
+
+// Main Services
+export const SERVICES = {
+  main: [
+    {
+      id: "home-loans",
+      title: "Home Loans",
+      description: "Competitive rates for owner-occupiers and investors",
+      href: "/services/home-loans",
+      icon: "Home",
+    },
+    {
+      id: "personal-finance",
+      title: "Personal Finance",
+      description: "Car loans, personal loans, and debt consolidation",
+      href: "/services/personal-finance",
+      icon: "User",
+    },
+    {
+      id: "commercial-finance",
+      title: "Commercial Finance",
+      description: "Business loans and commercial property finance",
+      href: "/services/commercial-finance",
+      icon: "Building",
+    },
+  ],
+} as const;
 
 // Helper function to generate common suburb services
 function createSuburbServices(suburbName: string): SuburbService[] {
@@ -35,7 +80,7 @@ function createSuburbServices(suburbName: string): SuburbService[] {
 // Helper function to generate common suburb page texts
 function createSuburbPageTexts(): SuburbPageTexts {
   return {
-    heroSubtitle: "Home Loans",
+    heroSubtitle: SERVICES.main[0].title, // Dynamically use first service (Home Loans)
     primaryCTAButton: "Get {suburb} Quote",
     secondaryCTAButton: "Call Our Team",
     marketInsightsTitle: "{suburb} Market Insights",
@@ -71,7 +116,6 @@ export const areas: AreasData = {
       heroImage:
         "https://images.unsplash.com/photo-1717883560409-14adc1074f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=2070&utm_source=figma&utm_medium=referral",
       gradient: "from-blue-600 to-purple-600",
-      accentColor: "blue",
       phone: "Call Our Sydney Office",
       stats: {
         clients: "500+",
@@ -109,7 +153,12 @@ export const areas: AreasData = {
           icon: "Star",
         },
       ],
-      suburbs: ["sydney-cbd", "bondi", "manly", "chatswood"],
+      suburbs: [
+        "sydney-cbd",
+        "sydney-bondi",
+        "sydney-manly",
+        "sydney-chatswood",
+      ],
       otherSuburbs: [
         "Hornsby",
         "Liverpool",
@@ -120,8 +169,8 @@ export const areas: AreasData = {
       ],
       route: "/areas/sydney",
       office: {
-        address: "NSW 2749, AUSTRALIA",
-        phone: "0402 742 493",
+        address: COMPANY_INFO.address,
+        phone: COMPANY_INFO.phone,
         hours: "Mon-Fri: 9AM-6PM | Sat: 9AM-2PM",
       },
       marketInsights: {
@@ -160,8 +209,7 @@ export const areas: AreasData = {
       heroImage:
         "https://images.unsplash.com/photo-1545044846-351ba102b6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-blue-600 to-purple-600",
-      accentColor: "blue",
-      phone: "0402 742 493",
+      phone: COMPANY_INFO.phone,
       stats: {
         clients: "400+",
         loans: "$200M+",
@@ -193,11 +241,11 @@ export const areas: AreasData = {
       ],
       suburbs: [
         "melbourne-cbd",
-        "south-yarra",
-        "brighton",
-        "richmond",
-        "st-kilda",
-        "docklands",
+        "melbourne-south-yarra",
+        "melbourne-brighton",
+        "melbourne-richmond",
+        "melbourne-st-kilda",
+        "melbourne-docklands",
       ],
       otherSuburbs: [
         "Fitzroy",
@@ -220,8 +268,7 @@ export const areas: AreasData = {
       heroImage:
         "https://images.unsplash.com/photo-1580014942344-ce423d2b885a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-blue-600 to-purple-600",
-      accentColor: "blue",
-      phone: "0402 742 493",
+      phone: COMPANY_INFO.phone,
       stats: {
         clients: "300+",
         loans: "$180M+",
@@ -253,11 +300,11 @@ export const areas: AreasData = {
       ],
       suburbs: [
         "perth-cbd",
-        "fremantle",
-        "joondalup",
-        "subiaco",
-        "mandurah",
-        "rockingham",
+        "perth-fremantle",
+        "perth-joondalup",
+        "perth-subiaco",
+        "perth-mandurah",
+        "perth-rockingham",
       ],
       otherSuburbs: [
         "Scarborough",
@@ -280,8 +327,7 @@ export const areas: AreasData = {
       heroImage:
         "https://images.unsplash.com/photo-1584417259164-370553879731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
       gradient: "from-blue-600 to-purple-600",
-      accentColor: "blue",
-      phone: "0402 742 493",
+      phone: COMPANY_INFO.phone,
       stats: {
         clients: "250+",
         loans: "$120M+",
@@ -311,7 +357,7 @@ export const areas: AreasData = {
           icon: "Star",
         },
       ],
-      suburbs: ["adelaide-cbd", "glenelg"],
+      suburbs: ["adelaide-cbd", "adelaide-glenelg"],
       otherSuburbs: [
         "North Adelaide",
         "Burnside",
@@ -352,8 +398,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Sydney CBD"),
       pageTexts: createSuburbPageTexts(),
     },
-    bondi: {
-      id: "bondi",
+    "sydney-bondi": {
+      id: "sydney-bondi",
       areaId: "sydney",
       name: "Bondi",
       slug: "bondi",
@@ -376,8 +422,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Bondi"),
       pageTexts: createSuburbPageTexts(),
     },
-    manly: {
-      id: "manly",
+    "sydney-manly": {
+      id: "sydney-manly",
       areaId: "sydney",
       name: "Manly",
       slug: "manly",
@@ -400,8 +446,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Manly"),
       pageTexts: createSuburbPageTexts(),
     },
-    chatswood: {
-      id: "chatswood",
+    "sydney-chatswood": {
+      id: "sydney-chatswood",
       areaId: "sydney",
       name: "Chatswood",
       slug: "chatswood",
@@ -448,8 +494,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Melbourne CBD"),
       pageTexts: createSuburbPageTexts(),
     },
-    "south-yarra": {
-      id: "south-yarra",
+    "melbourne-south-yarra": {
+      id: "melbourne-south-yarra",
       areaId: "melbourne",
       name: "South Yarra",
       slug: "south-yarra",
@@ -472,8 +518,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("South Yarra"),
       pageTexts: createSuburbPageTexts(),
     },
-    brighton: {
-      id: "brighton",
+    "melbourne-brighton": {
+      id: "melbourne-brighton",
       areaId: "melbourne",
       name: "Brighton",
       slug: "brighton",
@@ -496,8 +542,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Brighton"),
       pageTexts: createSuburbPageTexts(),
     },
-    richmond: {
-      id: "richmond",
+    "melbourne-richmond": {
+      id: "melbourne-richmond",
       areaId: "melbourne",
       name: "Richmond",
       slug: "richmond",
@@ -520,8 +566,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Richmond"),
       pageTexts: createSuburbPageTexts(),
     },
-    "st-kilda": {
-      id: "st-kilda",
+    "melbourne-st-kilda": {
+      id: "melbourne-st-kilda",
       areaId: "melbourne",
       name: "St Kilda",
       slug: "st-kilda",
@@ -544,8 +590,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("St Kilda"),
       pageTexts: createSuburbPageTexts(),
     },
-    docklands: {
-      id: "docklands",
+    "melbourne-docklands": {
+      id: "melbourne-docklands",
       areaId: "melbourne",
       name: "Docklands",
       slug: "docklands",
@@ -597,8 +643,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Perth CBD"),
       pageTexts: createSuburbPageTexts(),
     },
-    fremantle: {
-      id: "fremantle",
+    "perth-fremantle": {
+      id: "perth-fremantle",
       areaId: "perth",
       name: "Fremantle",
       slug: "fremantle",
@@ -626,8 +672,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Fremantle"),
       pageTexts: createSuburbPageTexts(),
     },
-    joondalup: {
-      id: "joondalup",
+    "perth-joondalup": {
+      id: "perth-joondalup",
       areaId: "perth",
       name: "Joondalup",
       slug: "joondalup",
@@ -650,8 +696,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Joondalup"),
       pageTexts: createSuburbPageTexts(),
     },
-    subiaco: {
-      id: "subiaco",
+    "perth-subiaco": {
+      id: "perth-subiaco",
       areaId: "perth",
       name: "Subiaco",
       slug: "subiaco",
@@ -674,8 +720,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Subiaco"),
       pageTexts: createSuburbPageTexts(),
     },
-    mandurah: {
-      id: "mandurah",
+    "perth-mandurah": {
+      id: "perth-mandurah",
       areaId: "perth",
       name: "Mandurah",
       slug: "mandurah",
@@ -698,8 +744,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Mandurah"),
       pageTexts: createSuburbPageTexts(),
     },
-    rockingham: {
-      id: "rockingham",
+    "perth-rockingham": {
+      id: "perth-rockingham",
       areaId: "perth",
       name: "Rockingham",
       slug: "rockingham",
@@ -751,8 +797,8 @@ export const suburbs: SuburbsData = {
       services: createSuburbServices("Adelaide CBD"),
       pageTexts: createSuburbPageTexts(),
     },
-    glenelg: {
-      id: "glenelg",
+    "adelaide-glenelg": {
+      id: "adelaide-glenelg",
       areaId: "adelaide",
       name: "Glenelg",
       slug: "glenelg",
@@ -783,23 +829,23 @@ export const suburbs: SuburbsData = {
   },
   allIds: [
     "sydney-cbd",
-    "bondi",
-    "manly",
-    "chatswood",
+    "sydney-bondi",
+    "sydney-manly",
+    "sydney-chatswood",
     "melbourne-cbd",
-    "south-yarra",
-    "brighton",
-    "richmond",
-    "st-kilda",
-    "docklands",
+    "melbourne-south-yarra",
+    "melbourne-brighton",
+    "melbourne-richmond",
+    "melbourne-st-kilda",
+    "melbourne-docklands",
     "perth-cbd",
-    "fremantle",
-    "joondalup",
-    "subiaco",
-    "mandurah",
-    "rockingham",
+    "perth-fremantle",
+    "perth-joondalup",
+    "perth-subiaco",
+    "perth-mandurah",
+    "perth-rockingham",
     "adelaide-cbd",
-    "glenelg",
+    "adelaide-glenelg",
   ],
 };
 
@@ -841,3 +887,106 @@ export const getMajorSuburbsForArea = (
     })
     .filter(Boolean);
 };
+
+// ===== DERIVED VALUES (NO DUPLICATION) =====
+// These functions ensure single source of truth by deriving data from base constants
+
+// Derive navigation from base data
+export const getDerivedNavigation = () => ({
+  main: [
+    { label: "Home", href: "/" },
+    {
+      label: "Services",
+      href: "#",
+      dropdown: SERVICES.main.map((service) => ({
+        label: service.title,
+        href: service.href,
+      })),
+    },
+    {
+      label: "Areas",
+      href: "#",
+      dropdown: areas.allIds.map((areaId) => {
+        const area = areas.byId[areaId];
+        return { label: area.name, href: `/areas/${areaId}` };
+      }),
+    },
+    { label: "Calculator", href: "/calculator" },
+    { label: "Contact", href: "#contact", isScroll: true },
+    { label: "About", href: "#about", isScroll: true },
+  ],
+  footer: {
+    sections: [
+      {
+        title: "Services",
+        links: [
+          ...SERVICES.main.map((service) => ({
+            label: service.title,
+            href: service.href,
+          })),
+          { label: "Loan Calculator", href: "/calculator" },
+        ],
+      },
+      {
+        title: "Areas We Serve",
+        links: areas.allIds.map((areaId) => {
+          const area = areas.byId[areaId];
+          return { label: area.name, href: `/areas/${areaId}` };
+        }),
+      },
+      {
+        title: "Resources",
+        links: [
+          { label: "First Home Buyer Guide", href: "#" },
+          { label: "Investment Property Tips", href: "#" },
+          { label: "Refinancing Guide", href: "#" },
+          { label: "Market Updates", href: "#" },
+        ],
+      },
+    ],
+  },
+});
+
+// Derive hero content for areas
+export const getDerivedAreaHero = (areaName: string) => ({
+  heroTitle: `${areaName} Mortgage Brokers`,
+  heroSubtitle: SERVICES.main[0].title, // Dynamically use first service (Home Loans)
+  heroDescription: `Get expert mortgage advice and competitive home loan rates in ${areaName}. Our experienced brokers help you secure the best deal for your property investment.`,
+});
+
+// Derive area statistics
+export const getDerivedAreaStats = (areaName: string) => ({
+  experience: "15+",
+  experienceLabel: "Years Experience",
+  loans: `In ${areaName} Home Loans`,
+  suburbs: "25+",
+  suburbsLabel: `${areaName} Suburbs Covered`,
+});
+
+// Derive area services
+export const getDerivedAreaServices = (areaName: string) => [
+  {
+    title: `${areaName} Home Loans`,
+    description: `First home buyers, refinancing, and investment loans in ${areaName}`,
+    icon: "Home",
+  },
+  {
+    title: `${areaName} Refinancing`,
+    description: `Switch to better rates and save on your ${areaName} property`,
+    icon: "Star",
+  },
+];
+
+// Derive area display names and descriptions
+export const getDerivedAreaInfo = (areaName: string) => ({
+  displayName: `${areaName} ${COMPANY_INFO.tagline} Experts`,
+  description: `Expert mortgage brokers serving ${areaName} and surrounding suburbs. We understand the unique property market and help you secure competitive home loan rates across ${areaName}'s diverse neighborhoods.`,
+});
+
+// Derive suburb-specific content
+export const getDerivedSuburbInfo = (suburbName: string, areaName: string) => ({
+  heroTitle: `${suburbName} Mortgage Brokers`,
+  heroDescription: `Get expert mortgage advice and competitive home loan rates in ${suburbName}, ${areaName}. Our experienced brokers help you secure the best deal for your property investment.`,
+  aboutTitle: `About ${suburbName}`,
+  aboutDescription: `${suburbName} is a vibrant suburb in ${areaName}, offering excellent property investment opportunities and lifestyle benefits for residents.`,
+});

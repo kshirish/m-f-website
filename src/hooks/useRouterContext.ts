@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { scrollToContact } from "@/utils/scrollToContact";
+import { scrollToSection } from "@/utils/scrollToSection";
 
 export function useRouterContext() {
   const router = useRouter();
@@ -10,6 +10,6 @@ export function useRouterContext() {
     navigate: (path: string) => {
       router.push(path);
     },
-    scrollToContact,
+    scrollToContact: () => scrollToSection("contact"),
   };
 }

@@ -1,9 +1,10 @@
 import { MetadataRoute } from "next";
+import { COMPANY_INFO } from "@/constants/common";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://www.mychoicemortgagefinance.com.au";
+  const baseUrl = COMPANY_INFO.website;
 
   return {
     rules: {

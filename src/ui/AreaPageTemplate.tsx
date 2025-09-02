@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "@/components/button";
+import { Button } from "@/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/card";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { Badge } from "@/components/badge";
-import { scrollToContact } from "@/utils/scrollToContact";
+} from "@/ui/card";
+import { ImageWithFallback } from "@/ui/ImageWithFallback";
+import { Badge } from "@/ui/badge";
+import { scrollToSection } from "@/utils/scrollToSection";
 import {
   MapPin,
   Phone,
@@ -22,9 +22,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { getAreaById, getMajorSuburbsForArea } from "@/constants/common";
-import { Area } from "@/constants/types";
 
 // Icon mapping for services
 const iconMap = {
@@ -108,8 +106,8 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                onClick={scrollToContact}
-                className="bg-white text-gray-900 hover:bg-gray-50 px-8 font-semibold"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+                onClick={() => scrollToSection("contact")}
               >
                 Get {areaData.name} Home Loan Quote
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -117,7 +115,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white hover:text-gray-900 px-8 font-semibold"
+                className="border-white hover:bg-white hover:text-gray-900 px-8 font-semibold"
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {areaData.phone}
@@ -254,7 +252,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                 {areaData.otherSuburbs.map((suburb, index) => (
                   <Card
                     key={index}
-                    className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50 cursor-pointer"
+                    className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50"
                   >
                     <CardContent className="p-0">
                       <MapPin className="w-4 h-4 mx-auto mb-2 text-blue-600" />
@@ -355,8 +353,8 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              onClick={scrollToContact}
-              className="bg-white text-gray-900 hover:bg-gray-100 px-8"
+              className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+              onClick={() => scrollToSection("contact")}
             >
               Get Your Free Quote Today
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -364,7 +362,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-white/10 px-8"
+              className="border-white hover:bg-white/10 px-8"
             >
               <Phone className="mr-2 w-5 h-5" />
               {areaData.phone}

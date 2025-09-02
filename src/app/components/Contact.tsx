@@ -1,15 +1,23 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/card";
-import { Button } from "@/components/button";
-import { Input } from "@/components/input";
-import { Textarea } from "@/components/textarea";
+import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
+import { Button } from "@/ui/button";
+import { Input } from "@/ui/input";
+import { Textarea } from "@/ui/textarea";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/select";
-import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
+} from "@/ui/select";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Shield,
+  MessageCircle,
+} from "lucide-react";
+import { COMPANY_INFO } from "@/constants/common";
 
 export default function Contact() {
   return (
@@ -39,10 +47,10 @@ export default function Contact() {
                   <div>
                     <p className="font-medium">Phone</p>
                     <a
-                      href="tel:0402742493"
+                      href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                       className="text-gray-300 hover:text-blue-400 transition-colors"
                     >
-                      0402 742 493
+                      {COMPANY_INFO.phone}
                     </a>
                   </div>
                 </div>
@@ -64,7 +72,7 @@ export default function Contact() {
                   <MapPin className="w-5 h-5 text-blue-400 mt-1 flex-shrink-0" />
                   <div>
                     <p className="font-medium">Address</p>
-                    <p className="text-gray-300">NSW 2749, AUSTRALIA</p>
+                    <p className="text-gray-300">{COMPANY_INFO.address}</p>
                   </div>
                 </div>
 
@@ -246,10 +254,10 @@ export default function Contact() {
                 Speak with an expert immediately
               </p>
               <a
-                href="tel:0402742493"
+                href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                 className="font-bold hover:text-blue-200 transition-colors"
               >
-                0402 742 493
+                {COMPANY_INFO.phone}
               </a>
             </CardContent>
           </Card>
@@ -278,7 +286,10 @@ export default function Contact() {
             className="bg-green-600 text-white border-0 p-6 text-center hover:bg-green-700 transition-colors cursor-pointer"
             onClick={() => {
               // Open calendar booking or phone call
-              window.location.href = "tel:0402742493";
+              window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                /\s/g,
+                ""
+              )}`;
             }}
           >
             <CardContent className="p-0">
