@@ -70,7 +70,7 @@ export const areas: AreasData = {
         "Based in the heart of Sydney, we've been helping locals secure their dream homes and investment properties across all Sydney suburbs for over 15 years.",
       heroImage:
         "https://images.unsplash.com/photo-1717883560409-14adc1074f0e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=2070&utm_source=figma&utm_medium=referral",
-      gradient: "from-blue-900 via-purple-900 to-pink-800",
+      gradient: "from-blue-600 to-purple-600",
       accentColor: "blue",
       phone: "Call Our Sydney Office",
       stats: {
@@ -159,8 +159,8 @@ export const areas: AreasData = {
         "Your trusted mortgage brokers serving Melbourne and surrounding suburbs. We understand Victoria's property market and help you secure the best home loan deals across Melbourne's diverse neighborhoods.",
       heroImage:
         "https://images.unsplash.com/photo-1545044846-351ba102b6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
-      gradient: "from-purple-900 via-indigo-900 to-purple-800",
-      accentColor: "purple",
+      gradient: "from-blue-600 to-purple-600",
+      accentColor: "blue",
       phone: "0402 742 493",
       stats: {
         clients: "400+",
@@ -219,8 +219,8 @@ export const areas: AreasData = {
         "Expert mortgage brokers serving Perth and WA suburbs. We understand the unique Western Australian property market and help you secure competitive home loan rates across Perth's growing regions.",
       heroImage:
         "https://images.unsplash.com/photo-1580014942344-ce423d2b885a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
-      gradient: "from-orange-900 via-red-900 to-pink-800",
-      accentColor: "orange",
+      gradient: "from-blue-600 to-purple-600",
+      accentColor: "blue",
       phone: "0402 742 493",
       stats: {
         clients: "300+",
@@ -279,8 +279,8 @@ export const areas: AreasData = {
         "Professional mortgage brokers serving Adelaide and surrounding SA regions. We help you navigate South Australia's property market with expert local knowledge and competitive home loan solutions.",
       heroImage:
         "https://images.unsplash.com/photo-1584417259164-370553879731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=2070",
-      gradient: "from-green-900 via-teal-900 to-blue-800",
-      accentColor: "green",
+      gradient: "from-blue-600 to-purple-600",
+      accentColor: "blue",
       phone: "0402 742 493",
       stats: {
         clients: "250+",

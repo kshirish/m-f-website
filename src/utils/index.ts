@@ -6,8 +6,4 @@ export { getAreasByState } from "./getAreasByState";
 export { getPopularSuburbs } from "./getPopularSuburbs";
 
 // Re-export navigation utilities
-export {
-  navigateToHome,
-  navigateToPath,
-  scrollToContactOnHome,
-} from "./navigation";
+export { navigateToHome, navigateToPath } from "./navigation";

@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { Slot } from "@radix-ui/react-slot@1.1.2";
-import { VariantProps, cva } from "class-variance-authority@0.7.1";
-import { PanelLeftIcon } from "lucide-react@0.487.0";
+import { Slot } from "@radix-ui/react-slot";
+import { VariantProps, cva } from "class-variance-authority";
+import { PanelLeftIcon } from "lucide-react";
 
 import { useIsMobile } from "@/hooks";
 import { cn } from "@/hooks";
@@ -606,10 +606,17 @@ function SidebarMenuSkeleton({
 }: React.ComponentProps<"div"> & {
   showIcon?: boolean;
 }) {
-  // Random width between 50 to 90%.
-  const width = React.useMemo(() => {
-    return `${Math.floor(Math.random() * 40) + 50}%`;
+  // Use predefined widths to avoid hydration mismatches
+  const predefinedWidths = ["60%", "75%", "85%"];
+  const [widthIndex, setWidthIndex] = React.useState(1); // Default to middle value (75%)
+
+  React.useEffect(() => {
+    // Only change width after mount to prevent hydration mismatch
+    const randomIndex = Math.floor(Math.random() * predefinedWidths.length);
+    setWidthIndex(randomIndex);
   }, []);
+
+  const width = predefinedWidths[widthIndex];
 
   return (
     <div

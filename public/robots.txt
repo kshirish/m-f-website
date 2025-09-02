@@ -1,0 +1,25 @@
+# robots.txt for My Choice: Mortgage and Finance
+
+User-agent: *
+Allow: /
+
+# Important pages
+Allow: /services/
+Allow: /areas/
+Allow: /calculator
+Allow: /about
+Allow: /contact
+
+# Sitemaps
+Sitemap: https://www.mychoicemortgagefinance.com.au/sitemap.xml
+
+# Block any development/internal files
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: *.json
+Disallow: *.js
+Disallow: *.css
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1

@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/button";
 import {
   Card,
@@ -8,6 +10,7 @@ import {
 } from "@/components/card";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { Badge } from "@/components/badge";
+import { scrollToContact } from "@/utils/scrollToContact";
 import {
   MapPin,
   Phone,
@@ -18,7 +21,8 @@ import {
   CheckCircle,
   ArrowRight,
 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { getAreaById, getMajorSuburbsForArea } from "@/constants/common";
 import { Area } from "@/constants/types";
 
@@ -36,7 +40,7 @@ interface AreaPageProps {
 }
 
 export default function AreaPageTemplate({ areaId }: AreaPageProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get area data from constants
   const areaData = getAreaById(areaId);
@@ -71,27 +75,6 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
     },
   ];
 
-  const scrollToContact = () => {
-    if (
-      window.location.hash === "#home" ||
-      window.location.hash === "" ||
-      window.location.hash === "#"
-    ) {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      window.location.hash = "home";
-      setTimeout(() => {
-        const contactSection = document.getElementById("contact");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  };
-
   return (
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
@@ -104,7 +87,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             alt={`${areaData.name} area`}
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 to-gray-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/60"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -115,7 +98,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
               {areaData.displayName.split(" ").slice(0, -2).join(" ")}
-              <span className="block text-orange-400">
+              <span className="block text-purple-300">
                 {areaData.displayName.split(" ").slice(-2).join(" ")}
               </span>
             </h1>
@@ -165,9 +148,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                   className="text-center p-6 hover:shadow-lg transition-shadow"
                 >
                   <CardContent className="p-0">
-                    <div
-                      className={`w-12 h-12 bg-gradient-to-br from-${areaData.accentColor}-600 to-${areaData.accentColor}-700 rounded-lg flex items-center justify-center mx-auto mb-4`}
-                    >
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="w-6 h-6 text-white" />
                     </div>
                     <div className="text-2xl font-bold text-gray-900 mb-1">
@@ -203,9 +184,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                 <Card key={index} className="hover:shadow-lg transition-shadow">
                   <CardHeader>
                     <CardTitle className="flex items-center space-x-2">
-                      <IconComponent
-                        className={`w-5 h-5 text-${areaData.accentColor}-500`}
-                      />
+                      <IconComponent className="w-5 h-5 text-blue-600" />
                       <span>{service.title}</span>
                     </CardTitle>
                     <CardDescription className="text-base">
@@ -247,21 +226,15 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                 {majorSuburbs.map((suburb, index) => (
                   <Card
                     key={index}
-                    className={`p-6 text-center hover:shadow-lg transition-all duration-300 hover:bg-${areaData.accentColor}-50 cursor-pointer group`}
-                    onClick={() => navigate(suburb.route)}
+                    className="p-6 text-center hover:shadow-lg transition-all duration-300 hover:bg-blue-50 cursor-pointer group"
+                    onClick={() => router.push(suburb.route)}
                   >
                     <CardContent className="p-0">
-                      <div
-                        className={`w-10 h-10 bg-${areaData.accentColor}-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-${areaData.accentColor}-200 transition-colors`}
-                      >
-                        <MapPin
-                          className={`w-5 h-5 text-${areaData.accentColor}-600`}
-                        />
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-200 transition-colors">
+                        <MapPin className="w-5 h-5 text-blue-600" />
                       </div>
                       <p className="font-medium mb-2">{suburb.name}</p>
-                      <p
-                        className={`text-xs text-gray-500 group-hover:text-${areaData.accentColor}-600 transition-colors`}
-                      >
+                      <p className="text-xs text-gray-500 group-hover:text-blue-600 transition-colors">
                         View Details →
                       </p>
                     </CardContent>
@@ -281,12 +254,10 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                 {areaData.otherSuburbs.map((suburb, index) => (
                   <Card
                     key={index}
-                    className={`p-4 text-center hover:shadow-md transition-shadow hover:bg-${areaData.accentColor}-50 cursor-pointer`}
+                    className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50 cursor-pointer"
                   >
                     <CardContent className="p-0">
-                      <MapPin
-                        className={`w-4 h-4 mx-auto mb-2 text-${areaData.accentColor}-600`}
-                      />
+                      <MapPin className="w-4 h-4 mx-auto mb-2 text-blue-600" />
                       <p className="text-sm font-medium">{suburb}</p>
                     </CardContent>
                   </Card>
@@ -302,6 +273,9 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <Button
               variant="outline"
               onClick={() => {
+                // Only run on client side
+                if (typeof window === "undefined") return;
+
                 // Scroll to contact section
                 const contactSection = document.getElementById("contact");
                 if (contactSection) {
@@ -319,7 +293,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-blue-100 to-purple-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -356,9 +330,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                 className="text-center p-8 hover:shadow-lg transition-shadow"
               >
                 <CardContent className="p-0">
-                  <div
-                    className={`w-16 h-16 bg-gradient-to-br from-${areaData.accentColor}-600 to-${areaData.accentColor}-700 rounded-full flex items-center justify-center mx-auto mb-6`}
-                  >
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
                     <feature.icon className="w-8 h-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
@@ -371,9 +343,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section
-        className={`py-20 bg-gradient-to-r from-${areaData.accentColor}-600 to-${areaData.accentColor}-700 text-white`}
-      >
+      <section className="py-20 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Get Started in {areaData.name}?

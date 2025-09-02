@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/button";
 import {
   Card,
@@ -8,6 +10,7 @@ import {
 } from "@/components/card";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { Badge } from "@/components/badge";
+import { scrollToContact } from "@/utils/scrollToContact";
 import {
   MapPin,
   Phone,
@@ -19,7 +22,8 @@ import {
   DollarSign,
 } from "lucide-react";
 import { getSuburbById, getAreaById } from "@/constants/common";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface SuburbPageTemplateProps {
   suburbId: string;
@@ -28,7 +32,7 @@ interface SuburbPageTemplateProps {
 export default function SuburbPageTemplate({
   suburbId,
 }: SuburbPageTemplateProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   // Get suburb and area data from constants
   const suburbData = getSuburbById(suburbId);
@@ -40,29 +44,6 @@ export default function SuburbPageTemplate({
   if (!areaData) {
     return <div>Area not found</div>;
   }
-
-  const scrollToContact = () => {
-    if (
-      window.location.hash === "#home" ||
-      window.location.hash === "" ||
-      window.location.hash === "#"
-    ) {
-      // If we're on home page, scroll to contact section
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    } else {
-      // If we're on a different page, navigate to home and then scroll
-      window.location.hash = "home";
-      setTimeout(() => {
-        const contactSection = document.getElementById("contact");
-        if (contactSection) {
-          contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 100);
-    }
-  };
 
   // Get suburb-specific texts with fallbacks
   const texts = suburbData.pageTexts || {
@@ -120,7 +101,7 @@ export default function SuburbPageTemplate({
             alt={`${suburbData.name} area`}
             className="w-full h-full object-cover opacity-30"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/80 to-purple-600/60"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -310,7 +291,7 @@ export default function SuburbPageTemplate({
                   const suburbRoute = nearbySuburb
                     .toLowerCase()
                     .replace(/\s+/g, "-");
-                  navigate(`/areas/${areaData.id}/suburbs/${suburbRoute}`);
+                  router.push(`/areas/${areaData.id}/${suburbRoute}`);
                 }}
               >
                 <CardContent className="p-0">
@@ -325,7 +306,7 @@ export default function SuburbPageTemplate({
 
       {/* CTA */}
       <section
-        className={`py-20 bg-gradient-to-r ${areaData.gradient} text-white`}
+        className={`py-20 bg-gradient-to-br ${areaData.gradient} text-white`}
       >
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
