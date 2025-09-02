@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/ui/card";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import {
   CheckCircle,
   Home,
@@ -23,6 +23,8 @@ import {
 import { COMPANY_INFO } from "@/constants/common";
 
 export default function HomeLoansPage() {
+  const { scrollToSection } = useRouterContext();
+
   const loanTypes = [
     {
       title: "First Home Buyer Loans",

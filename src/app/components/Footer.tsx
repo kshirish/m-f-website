@@ -63,13 +63,10 @@ export default function Footer() {
               <div className="flex items-center space-x-2">
                 <Phone className="w-4 h-4" />
                 <a
-                  href={`tel:${COMPANY_INFO.phone}`}
+                  href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                   className="hover:text-white transition-colors"
                 >
-                  {COMPANY_INFO.phone.replace(
-                    /(\d{4})(\d{3})(\d{3})/,
-                    "$1 $2 $3"
-                  )}
+                  {COMPANY_INFO.phone}
                 </a>
               </div>
               <div className="flex items-center space-x-2">

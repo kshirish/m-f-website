@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/ui/card";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import { COMPANY_INFO } from "@/constants/common";
 import {
   CheckCircle,
@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 
 export default function CommercialFinancePage() {
+  const { scrollToSection } = useRouterContext();
   const financeTypes = [
     {
       title: "Equipment Finance",
@@ -162,15 +163,14 @@ export default function CommercialFinancePage() {
                 variant="outline"
                 className="border-white hover:bg-white/10 px-8"
                 onClick={() =>
-                  (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                  (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                    /\s/g,
+                    ""
+                  )}`)
                 }
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call{" "}
-                {COMPANY_INFO.phone.replace(
-                  /(\d{4})(\d{3})(\d{3})/,
-                  "$1 $2 $3"
-                )}
+                Call {COMPANY_INFO.phone}
               </Button>
             </div>
           </div>
@@ -466,12 +466,14 @@ export default function CommercialFinancePage() {
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
               onClick={() =>
-                (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                  /\s/g,
+                  ""
+                )}`)
               }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call{" "}
-              {COMPANY_INFO.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}
+              Call {COMPANY_INFO.phone}
             </Button>
           </div>
         </div>

@@ -32,10 +32,7 @@ export default function About() {
   ];
 
   return (
-    <section
-      id="about"
-      className="py-20 bg-gradient-to-br from-blue-100 to-purple-100"
-    >
+    <section id="about" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">

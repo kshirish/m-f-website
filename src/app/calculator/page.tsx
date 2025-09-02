@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { Metadata } from "next";
 import {
   Card,
   CardContent,
@@ -22,7 +21,7 @@ import {
 } from "@/ui/select";
 import { Slider } from "@/ui/slider";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import {
   Calculator as CalculatorIcon,
   DollarSign,
@@ -34,6 +33,7 @@ import {
 } from "lucide-react";
 
 export default function CalculatorPage() {
+  const { scrollToSection } = useRouterContext();
   const [loanAmount, setLoanAmount] = useState(600000);
   const [interestRate, setInterestRate] = useState(6.5);
   const [loanTerm, setLoanTerm] = useState(30);
@@ -438,12 +438,14 @@ export default function CalculatorPage() {
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
               onClick={() =>
-                (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                  /\s/g,
+                  ""
+                )}`)
               }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call{" "}
-              {COMPANY_INFO.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}
+              Call {COMPANY_INFO.phone}
             </Button>
           </div>
         </div>

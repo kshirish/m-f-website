@@ -10,7 +10,7 @@ import {
 } from "@/ui/card";
 import { ImageWithFallback } from "@/ui/ImageWithFallback";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import {
   MapPin,
   Phone,
@@ -39,6 +39,7 @@ interface AreaPageProps {
 
 export default function AreaPageTemplate({ areaId }: AreaPageProps) {
   const router = useRouter();
+  const { scrollToSection } = useRouterContext();
 
   // Get area data from constants
   const areaData = getAreaById(areaId);
@@ -270,19 +271,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             </p>
             <Button
               variant="outline"
-              onClick={() => {
-                // Only run on client side
-                if (typeof window === "undefined") return;
-
-                // Scroll to contact section
-                const contactSection = document.getElementById("contact");
-                if (contactSection) {
-                  contactSection.scrollIntoView({ behavior: "smooth" });
-                } else {
-                  // If no contact section on current page, navigate to home with contact focus
-                  window.location.href = "/#contact";
-                }
-              }}
+              onClick={() => scrollToSection("contact")}
             >
               Contact Us About Your Area
             </Button>
@@ -291,7 +280,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-100 to-purple-100">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">

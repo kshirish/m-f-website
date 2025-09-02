@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/ui/card";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import { COMPANY_INFO } from "@/constants/common";
 import {
   CheckCircle,
@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 
 export default function PersonalFinancePage() {
+  const { scrollToSection } = useRouterContext();
   const loanTypes = [
     {
       title: "Personal Loans",
@@ -127,15 +128,14 @@ export default function PersonalFinancePage() {
                 variant="outline"
                 className="border-white hover:bg-white/10 px-8"
                 onClick={() =>
-                  (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                  (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                    /\s/g,
+                    ""
+                  )}`)
                 }
               >
                 <Phone className="mr-2 w-5 h-5" />
-                Call{" "}
-                {COMPANY_INFO.phone.replace(
-                  /(\d{4})(\d{3})(\d{3})/,
-                  "$1 $2 $3"
-                )}
+                Call {COMPANY_INFO.phone}
               </Button>
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function PersonalFinancePage() {
       {/* Loan Calculator CTA */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg p-8 text-center">
+          <div className="rounded-lg p-8 text-center">
             <div className="flex justify-center mb-4">
               <Calculator className="w-12 h-12 text-blue-600" />
             </div>
@@ -426,12 +426,14 @@ export default function PersonalFinancePage() {
               variant="outline"
               className="border-white hover:bg-white/10 px-8"
               onClick={() =>
-                (window.location.href = `tel:${COMPANY_INFO.phone}`)
+                (window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                  /\s/g,
+                  ""
+                )}`)
               }
             >
               <Phone className="mr-2 w-5 h-5" />
-              Call{" "}
-              {COMPANY_INFO.phone.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3")}
+              Call {COMPANY_INFO.phone}
             </Button>
           </div>
         </div>

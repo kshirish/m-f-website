@@ -8,7 +8,7 @@ import { COMPANY_INFO, areas } from "@/constants/common";
 
 export default function ServiceAreas() {
   const router = useRouter();
-  const serviceAreas = Object.entries(areas).map(([slug, area]) => ({
+  const serviceAreas = Object.entries(areas.byId).map(([slug, area]) => ({
     name: area.name,
     slug: slug,
     isMain: slug === "sydney", // Sydney is the main headquarters
@@ -73,13 +73,10 @@ export default function ServiceAreas() {
                 <span>
                   Call us at{" "}
                   <a
-                    href={`tel:${COMPANY_INFO.phone}`}
+                    href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                     className="font-bold text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    {COMPANY_INFO.phone.replace(
-                      /(\d{4})(\d{3})(\d{3})/,
-                      "$1 $2 $3"
-                    )}
+                    {COMPANY_INFO.phone}
                   </a>{" "}
                   for immediate assistance
                 </span>

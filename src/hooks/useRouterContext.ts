@@ -10,6 +10,6 @@ export function useRouterContext() {
     navigate: (path: string) => {
       router.push(path);
     },
-    scrollToContact: () => scrollToSection("contact"),
+    scrollToSection: (sectionId: string) => scrollToSection(sectionId, router),
   };
 }

@@ -7,11 +7,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { COMPANY_INFO, getDerivedNavigation } from "@/constants/common";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+  const { scrollToSection } = useRouterContext();
   const navigation = getDerivedNavigation();
 
   return (
@@ -94,13 +95,10 @@ export default function Header() {
             <div className="flex items-center space-x-2 text-sm text-gray-600">
               <Phone className="w-4 h-4" />
               <a
-                href={`tel:${COMPANY_INFO.phone}`}
+                href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                 className="hover:text-blue-600 transition-colors"
               >
-                {COMPANY_INFO.phone.replace(
-                  /(\d{4})(\d{3})(\d{3})/,
-                  "$1 $2 $3"
-                )}
+                {COMPANY_INFO.phone}
               </a>
             </div>
             <Button onClick={() => scrollToSection("contact")}>
@@ -175,13 +173,10 @@ export default function Header() {
                 <div className="flex items-center space-x-2 text-sm text-gray-600">
                   <Phone className="w-4 h-4" />
                   <a
-                    href={`tel:${COMPANY_INFO.phone}`}
+                    href={`tel:${COMPANY_INFO.phone.replace(/\s/g, "")}`}
                     className="hover:text-blue-600 transition-colors"
                   >
-                    {COMPANY_INFO.phone.replace(
-                      /(\d{4})(\d{3})(\d{3})/,
-                      "$1 $2 $3"
-                    )}
+                    {COMPANY_INFO.phone}
                   </a>
                 </div>
                 <Button

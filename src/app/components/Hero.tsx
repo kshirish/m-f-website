@@ -4,11 +4,12 @@ import { Button } from "@/ui/button";
 import { ImageWithFallback } from "@/ui/ImageWithFallback";
 import { ArrowRight, Shield, Clock, Users, Calculator } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import { COMPANY_INFO } from "@/constants/common";
 
 export default function Hero() {
   const router = useRouter();
+  const { scrollToSection } = useRouterContext();
 
   return (
     <section

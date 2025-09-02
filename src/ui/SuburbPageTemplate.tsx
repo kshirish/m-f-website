@@ -10,7 +10,7 @@ import {
 } from "@/ui/card";
 import { ImageWithFallback } from "@/ui/ImageWithFallback";
 import { Badge } from "@/ui/badge";
-import { scrollToSection } from "@/utils/scrollToSection";
+import { useRouterContext } from "@/hooks/useRouterContext";
 import {
   MapPin,
   Phone,
@@ -23,7 +23,6 @@ import {
 } from "lucide-react";
 import { getSuburbById, getAreaById } from "@/constants/common";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 interface SuburbPageTemplateProps {
   suburbId: string;
@@ -33,6 +32,7 @@ export default function SuburbPageTemplate({
   suburbId,
 }: SuburbPageTemplateProps) {
   const router = useRouter();
+  const { scrollToSection } = useRouterContext();
 
   // Get suburb and area data from constants
   const suburbData = getSuburbById(suburbId);
@@ -285,14 +285,14 @@ export default function SuburbPageTemplate({
             {suburbData.nearbySuburbs.map((nearbySuburb, index) => (
               <Card
                 key={index}
-                className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50 cursor-pointer"
-                onClick={() => {
-                  // Convert suburb name to route (this logic will need to be improved later)
-                  const suburbRoute = nearbySuburb
-                    .toLowerCase()
-                    .replace(/\s+/g, "-");
-                  router.push(`/areas/${areaData.id}/${suburbRoute}`);
-                }}
+                className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50"
+                // onClick={() => {
+                //   // Convert suburb name to route (this logic will need to be improved later)
+                //   const suburbRoute = nearbySuburb
+                //     .toLowerCase()
+                //     .replace(/\s+/g, "-");
+                //   router.push(`/areas/${areaData.id}/${suburbRoute}`);
+                // }}
               >
                 <CardContent className="p-0">
                   <MapPin className="w-5 h-5 mx-auto mb-2 text-blue-600" />
