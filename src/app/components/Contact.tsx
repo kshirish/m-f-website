@@ -246,7 +246,16 @@ export default function Contact() {
 
         {/* Quick Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          <Card className="bg-blue-600 text-white border-0 p-6 text-center hover:bg-blue-700 transition-colors cursor-pointer">
+          <Card
+            className="bg-blue-600 text-white border-0 p-6 text-center hover:bg-blue-700 transition-colors cursor-pointer"
+            onClick={() => {
+              // Open calendar booking or phone call
+              window.location.href = `tel:${COMPANY_INFO.phone.replace(
+                /\s/g,
+                ""
+              )}`;
+            }}
+          >
             <CardContent className="p-0">
               <Phone className="w-8 h-8 mx-auto mb-4" />
               <h3 className="font-semibold mb-2">Call Now</h3>

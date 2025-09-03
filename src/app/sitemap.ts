@@ -30,22 +30,81 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   // Area pages
-  const areaPages = Object.keys(areas).map((areaSlug) => ({
-    url: `${baseUrl}/areas/${areaSlug}`,
+  const areaPages = areas.allIds.map((areaId) => ({
+    url: `${baseUrl}/areas/${areaId}`,
     lastModified: currentDate,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   // Suburb pages
-  const suburbPages = Object.entries(suburbs).map(
-    ([suburbSlug, suburbData]) => ({
-      url: `${baseUrl}/areas/${suburbData.areaSlug}/suburbs/${suburbSlug}`,
+  const suburbPages = suburbs.allIds.map((suburbId) => {
+    const suburbData = suburbs.byId[suburbId];
+    return {
+      url: `${baseUrl}/areas/${suburbData.areaId}/suburbs/${suburbData.slug}`,
       lastModified: currentDate,
       changeFrequency: "monthly" as const,
       priority: 0.7,
-    })
-  );
+    };
+  });
 
-  return [...staticPages, ...areaPages, ...suburbPages];
+  // Blog pages
+  const blogPages = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/blog/first-home-buyer-guide`,
+      lastModified: "2024-03-15T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/investment-property-tips`,
+      lastModified: "2024-03-10T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/refinancing-guide`,
+      lastModified: "2024-03-12T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/market-updates`,
+      lastModified: "2024-02-22T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/construction-loans-guide`,
+      lastModified: "2024-02-20T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/smsf-property-investment`,
+      lastModified: "2024-02-18T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/first-home-buyer-grants-2024`,
+      lastModified: "2024-02-16T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/when-to-refinance`,
+      lastModified: "2024-02-14T10:00:00+10:00",
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    },
+  ];
+
+  return [...staticPages, ...areaPages, ...suburbPages, ...blogPages];
 }

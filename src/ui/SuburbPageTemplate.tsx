@@ -242,31 +242,59 @@ export default function SuburbPageTemplate({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="flex items-center space-x-2">
-                    <Home className="w-5 h-5 text-blue-600" />
-                    <span>{service.title}</span>
-                  </CardTitle>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => scrollToSection("contact")}
-                  >
-                    {texts.servicesCTAButton.replace(
-                      "{suburb}",
-                      suburbData.name
-                    )}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            {services.map((service, index) => {
+              // Map service titles to appropriate service pages for internal linking
+              const getServiceLink = (title: string) => {
+                if (
+                  title.toLowerCase().includes("first home buyer") ||
+                  title.toLowerCase().includes("home loan")
+                ) {
+                  return "/services/home-loans";
+                } else if (
+                  title.toLowerCase().includes("investment") ||
+                  title.toLowerCase().includes("property")
+                ) {
+                  return "/services/commercial-finance";
+                } else if (title.toLowerCase().includes("refinanc")) {
+                  return "/services/personal-finance";
+                } else {
+                  return "/services/home-loans"; // Default fallback
+                }
+              };
+
+              return (
+                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <CardHeader>
+                    <CardTitle className="flex items-center space-x-2">
+                      <Home className="w-5 h-5 text-blue-600" />
+                      <span>{service.title}</span>
+                    </CardTitle>
+                    <CardDescription className="text-base">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => router.push(getServiceLink(service.title))}
+                    >
+                      Learn More About {service.title}
+                    </Button>
+                    <Button
+                      variant="default"
+                      className="w-full"
+                      onClick={() => scrollToSection("contact")}
+                    >
+                      {texts.servicesCTAButton.replace(
+                        "{suburb}",
+                        suburbData.name
+                      )}
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -285,18 +313,21 @@ export default function SuburbPageTemplate({
             {suburbData.nearbySuburbs.map((nearbySuburb, index) => (
               <Card
                 key={index}
-                className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50"
-                // onClick={() => {
-                //   // Convert suburb name to route (this logic will need to be improved later)
-                //   const suburbRoute = nearbySuburb
-                //     .toLowerCase()
-                //     .replace(/\s+/g, "-");
-                //   router.push(`/areas/${areaData.id}/${suburbRoute}`);
-                // }}
+                className="p-4 text-center hover:shadow-md transition-shadow hover:bg-blue-50 cursor-pointer"
+                onClick={() => {
+                  // Convert suburb name to route - use kebab case
+                  const suburbRoute = nearbySuburb
+                    .toLowerCase()
+                    .replace(/\s+/g, "-")
+                    .replace(/[^a-z0-9-]/g, ""); // Remove special characters
+                  router.push(`/areas/${areaData.id}/suburbs/${suburbRoute}`);
+                }}
               >
                 <CardContent className="p-0">
                   <MapPin className="w-5 h-5 mx-auto mb-2 text-blue-600" />
-                  <p className="text-sm font-medium">{nearbySuburb}</p>
+                  <p className="text-sm font-medium text-blue-600 hover:text-blue-800">
+                    {nearbySuburb}
+                  </p>
                 </CardContent>
               </Card>
             ))}

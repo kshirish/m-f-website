@@ -912,6 +912,7 @@ export const getDerivedNavigation = () => ({
       }),
     },
     { label: "Calculator", href: "/calculator" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "#contact", isScroll: true },
     { label: "About", href: "#about", isScroll: true },
   ],
@@ -937,10 +938,17 @@ export const getDerivedNavigation = () => ({
       {
         title: "Resources",
         links: [
-          { label: "First Home Buyer Guide", href: "#" },
-          { label: "Investment Property Tips", href: "#" },
-          { label: "Refinancing Guide", href: "#" },
-          { label: "Market Updates", href: "#" },
+          { label: "Finance Blog", href: "/blog" },
+          {
+            label: "First Home Buyer Guide",
+            href: "/blog/first-home-buyer-guide",
+          },
+          {
+            label: "Investment Property Tips",
+            href: "/blog/investment-property-tips",
+          },
+          { label: "Refinancing Guide", href: "/blog/refinancing-guide" },
+          { label: "Market Updates", href: "/blog/market-updates" },
         ],
       },
     ],

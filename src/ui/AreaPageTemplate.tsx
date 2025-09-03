@@ -191,8 +191,29 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <Button variant="outline" className="w-full">
-                      Learn More
+                    <Button
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => {
+                        const serviceLinks: Record<string, string> = {
+                          "First Home Buyer Assistance": "/services/home-loans",
+                          "Investment Property Loans": "/services/home-loans",
+                          "Commercial Property Finance":
+                            "/services/commercial-finance",
+                          "Refinancing Solutions": "/services/home-loans",
+                          "Personal Finance": "/services/personal-finance",
+                          "Car Loans": "/services/personal-finance",
+                          "Equipment Finance": "/services/commercial-finance",
+                        };
+                        const targetPage = serviceLinks[service.title];
+                        if (targetPage) {
+                          router.push(targetPage);
+                        } else {
+                          scrollToSection("contact");
+                        }
+                      }}
+                    >
+                      Learn More About {service.title}
                     </Button>
                   </CardContent>
                 </Card>

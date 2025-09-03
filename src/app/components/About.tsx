@@ -1,8 +1,10 @@
 import { Card, CardContent } from "@/ui/card";
 import { Button } from "@/ui/button";
 import { Award, Users, Clock, Shield, Star, TrendingUp } from "lucide-react";
+import { useRouterContext } from "@/hooks/useRouterContext";
 
 export default function About() {
+  const { scrollToSection } = useRouterContext();
   const stats = [
     { icon: Users, value: "1000+", label: "Happy Clients" },
     { icon: TrendingUp, value: "$500M+", label: "Loans Processed" },
@@ -88,7 +90,11 @@ export default function About() {
               loan – we're here to support you throughout your entire financial
               journey.
             </p>
-            <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-blue-700"
+              onClick={() => scrollToSection("contact")}
+            >
               Learn More About Our Team
             </Button>
           </div>

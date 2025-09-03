@@ -7,20 +7,21 @@ import Footer from "./components/Footer";
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Choice: Mortgage and Finance",
+  metadataBase: new URL("https://www.mychoicemortgagefinance.com.au"),
+  title: "Home Loans & Mortgage Broker Sydney | My Choice Mortgage & Finance",
   description:
-    "Expert mortgage brokers providing home loans, personal finance, and commercial finance solutions across Sydney, Melbourne, Perth, and Adelaide.",
+    "Expert mortgage brokers in Sydney offering home loans, refinancing, and investment property finance. Get competitive rates and personalized service. Licensed broker since 2009.",
   keywords: [
-    "home loans",
-    "mortgage broker",
-    "finance",
-    "loans",
-    "Sydney",
-    "Melbourne",
-    "Perth",
-    "Adelaide",
+    "home loans Sydney",
+    "mortgage broker Sydney",
+    "refinancing",
+    "investment property loans",
+    "first home buyer",
+    "commercial finance",
+    "personal loans",
+    "debt consolidation",
   ],
-  authors: [{ name: "My Choice: Mortgage and Finance" }],
+  authors: [{ name: "My Choice Mortgage & Finance" }],
   icons: {
     icon: [
       { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -42,18 +43,27 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon/site.webmanifest",
   openGraph: {
-    title: "My Choice: Mortgage and Finance",
+    title: "Home Loans & Mortgage Broker Sydney | My Choice Mortgage & Finance",
     description:
-      "Expert mortgage brokers providing home loans, personal finance, and commercial finance solutions across Australia.",
+      "Expert mortgage brokers in Sydney offering competitive home loans, refinancing, and investment property finance. Licensed broker with 15+ years experience.",
     type: "website",
     locale: "en_AU",
-    siteName: "My Choice: Mortgage and Finance",
+    siteName: "My Choice Mortgage & Finance",
+    url: "https://www.mychoicemortgagefinance.com.au",
+    images: [
+      {
+        url: "/logo.png",
+        width: 800,
+        height: 600,
+        alt: "My Choice Mortgage & Finance - Sydney Mortgage Broker",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "My Choice: Mortgage and Finance",
+    title: "Home Loans & Mortgage Broker Sydney | My Choice Mortgage & Finance",
     description:
-      "Expert mortgage brokers providing home loans, personal finance, and commercial finance solutions across Australia.",
+      "Expert mortgage brokers in Sydney offering competitive home loans, refinancing, and investment property finance. Licensed broker with 15+ years experience.",
   },
   robots: {
     index: true,
@@ -76,8 +86,64 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    name: "My Choice Mortgage & Finance",
+    description:
+      "Expert mortgage brokers in Sydney offering home loans, refinancing, and investment property finance",
+    url: "https://www.mychoicemortgagefinance.com.au",
+    telephone: "0402 742 493",
+    email: "info@mychoicemortgagefinance.com.au",
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "AU",
+      addressRegion: "NSW",
+      postalCode: "2749",
+    },
+    areaServed: [
+      {
+        "@type": "City",
+        name: "Sydney",
+        addressCountry: "AU",
+      },
+      {
+        "@type": "City",
+        name: "Melbourne",
+        addressCountry: "AU",
+      },
+      {
+        "@type": "City",
+        name: "Perth",
+        addressCountry: "AU",
+      },
+      {
+        "@type": "City",
+        name: "Adelaide",
+        addressCountry: "AU",
+      },
+    ],
+    services: [
+      "Home Loans",
+      "Refinancing",
+      "Investment Property Finance",
+      "Commercial Finance",
+      "Personal Loans",
+    ],
+    sameAs: [
+      "https://www.facebook.com/mychoicemortgageaus",
+      "https://maps.app.goo.gl/PEJSBPfNV9mxoJi8A",
+    ],
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className={dmSans.className}>
         <div className="min-h-screen">
           <Header />
