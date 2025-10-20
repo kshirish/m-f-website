@@ -16,57 +16,101 @@ import {
   ArrowRight,
   CheckCircle,
   Calculator,
+  FileText,
+  PiggyBank,
+  RefreshCw,
+  TrendingUp,
+  Heart,
+  Hammer,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { SERVICES } from "@/constants/common";
 
 export default function Services() {
   const router = useRouter();
-  const services = [
+
+  // Icon mapping for the services
+  const iconMap: { [key: string]: any } = {
+    Home: Heart,
+    FileText: FileText,
+    PiggyBank: PiggyBank,
+    Building: Hammer,
+    CreditCard: CreditCard,
+    RefreshCw: RefreshCw,
+    TrendingUp: TrendingUp,
+  };
+
+  const servicesData = [
     {
-      icon: Home,
-      title: "Home Loans & Mortgages",
+      id: "first-home-buyers",
+      title: "First Home Buyers",
       description:
-        "Competitive rates for first-time buyers, refinancing, and investment properties.",
+        "Expert guidance for first-time property buyers with government grants and low deposit options.",
       image:
-        "https://images.unsplash.com/photo-1652469280598-48842f46be29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMG1vcnRnYWdlfGVufDF8fHx8MTc1NTg2MTY4Nnww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      features: [
-        "First home buyer loans",
-        "Investment property loans",
-        "Refinancing solutions",
-        "Construction loans",
-        "SMSF loans",
-      ],
+        "https://images.unsplash.com/photo-1652469280598-48842f46be29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBob3VzZSUyMG1vcnRnYWdlfGVufDF8fHx8MTc1NTg2MTY4Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      icon: Heart,
+      href: "/services/first-home-buyers",
     },
     {
+      id: "low-doc-loans",
+      title: "Low Doc Loans",
+      description:
+        "Flexible documentation loans perfect for self-employed borrowers and complex income structures.",
+      image:
+        "https://images.unsplash.com/photo-1711344397160-b23d5deaa012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdG9yJTIwbW9uZXklMjBwbGFubmluZ3xlbnwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      icon: FileText,
+      href: "/services/low-doc-loans",
+    },
+    {
+      id: "smsf",
+      title: "SMSF",
+      description:
+        "Self-managed super fund property investment loans with tax-effective strategies.",
+      image:
+        "https://images.unsplash.com/photo-1681505531034-8d67054e07f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMGZpbmFuY2V8ZW58MXx8fHwxNzU1ODYxNjg2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      icon: PiggyBank,
+      href: "/services/smsf",
+    },
+    {
+      id: "construction-loans",
+      title: "Construction Loans",
+      description:
+        "Progressive funding for new home construction and major renovation projects.",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      icon: Hammer,
+      href: "/services/construction-loans",
+    },
+    {
+      id: "debt-consolidation",
+      title: "Debt Consolidation",
+      description:
+        "Simplify your finances by consolidating high-interest debts into one low-rate loan.",
+      image:
+        "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       icon: CreditCard,
-      title: "Personal Finance",
-      description:
-        "Flexible personal loans for life's important moments and unexpected expenses.",
-      image:
-        "https://images.unsplash.com/photo-1711344397160-b23d5deaa012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdG9yJTIwbW9uZXklMjBwbGFubmluZ3xlbnwxfHx8fDE3NTU4NjE2ODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      features: [
-        "Personal loans",
-        "Car loans",
-        "Debt consolidation",
-        "Home improvement loans",
-        "Holiday loans",
-      ],
+      href: "/services/debt-consolidation",
     },
     {
-      icon: Building,
-      title: "Commercial Finance",
+      id: "refinancing",
+      title: "Refinancing",
       description:
-        "Comprehensive business financing solutions to help your enterprise grow and thrive.",
+        "Switch to better rates and save thousands on your existing home loan.",
       image:
-        "https://images.unsplash.com/photo-1681505531034-8d67054e07f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMGhhbmRzaGFrZSUyMGZpbmFuY2V8ZW58MXx8fHwxNzU1ODYxNjg2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-      features: [
-        "Commercial property loans",
-        "Business loans",
-        "Equipment finance",
-        "Working capital",
-        "Trade finance",
-      ],
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      icon: RefreshCw,
+      href: "/services/refinancing",
+    },
+    {
+      id: "property-investment",
+      title: "Property Investment",
+      description:
+        "Build wealth through investment property loans and portfolio building strategies.",
+      image:
+        "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      icon: TrendingUp,
+      href: "/services/property-investment",
     },
   ];
 
@@ -129,12 +173,12 @@ export default function Services() {
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => {
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {servicesData.map((service, index) => {
             const IconComponent = service.icon;
             return (
               <Card
-                key={index}
+                key={service.id}
                 className="group hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
@@ -159,29 +203,10 @@ export default function Services() {
                 </CardHeader>
 
                 <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.map((feature, idx) => (
-                      <li
-                        key={idx}
-                        className="flex items-center text-sm text-gray-600"
-                      >
-                        <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
                   <Button
                     variant="outline"
                     className="w-full group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-colors"
-                    onClick={() => {
-                      const serviceLinks: { [key: string]: string } = {
-                        "Home Loans & Mortgages": "/services/home-loans",
-                        "Personal Finance": "/services/personal-finance",
-                        "Commercial Finance": "/services/commercial-finance",
-                      };
-                      router.push(serviceLinks[service.title] || "/services");
-                    }}
+                    onClick={() => router.push(service.href)}
                   >
                     Learn More
                     <ArrowRight className="ml-2 w-4 h-4" />
