@@ -147,7 +147,7 @@ export default function MarketUpdatesPage() {
 
                 {/* Key Market Indicators */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
-                  <Card className="text-center border-l-4 border-l-green-500">
+                  <Card className="text-center  border-l-green-500">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-center mb-2">
                         <TrendingUp className="w-6 h-6 text-green-600" />
@@ -161,7 +161,7 @@ export default function MarketUpdatesPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="text-center border-l-4 border-l-blue-500">
+                  <Card className="text-center  border-l-blue-500">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-center mb-2">
                         <Home className="w-6 h-6 text-blue-600" />
@@ -175,7 +175,7 @@ export default function MarketUpdatesPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="text-center border-l-4 border-l-purple-500">
+                  <Card className="text-center  border-l-purple-500">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-center mb-2">
                         <BarChart3 className="w-6 h-6 text-purple-600" />
@@ -187,7 +187,7 @@ export default function MarketUpdatesPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="text-center border-l-4 border-l-orange-500">
+                  <Card className="text-center  border-l-orange-500">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-center mb-2">
                         <DollarSign className="w-6 h-6 text-orange-600" />
@@ -217,7 +217,7 @@ export default function MarketUpdatesPage() {
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <Card className="border-l-4 border-l-green-500">
+                    <Card className=" border-l-green-500">
                       <CardHeader>
                         <CardTitle className="flex items-center text-green-600">
                           <TrendingUp className="w-5 h-5 mr-2" />
@@ -246,7 +246,7 @@ export default function MarketUpdatesPage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="border-l-4 border-l-orange-500">
+                    <Card className=" border-l-orange-500">
                       <CardHeader>
                         <CardTitle className="flex items-center text-orange-600">
                           <AlertCircle className="w-5 h-5 mr-2" />
@@ -420,7 +420,7 @@ export default function MarketUpdatesPage() {
                     sentiment and borrowing capacity.
                   </p>
 
-                  <Card className="border-l-4 border-l-purple-500 mb-6">
+                  <Card className=" border-l-purple-500 mb-6">
                     <CardHeader>
                       <CardTitle>Current Rate Environment</CardTitle>
                     </CardHeader>

@@ -137,7 +137,7 @@ export default function InvestmentPropertyTipsPage() {
                 </div>
 
                 {/* Important Disclaimer */}
-                <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-8">
+                <div className="bg-yellow-50  border-yellow-400 p-6 mb-8">
                   <div className="flex items-start">
                     <AlertCircle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
                     <div>
@@ -168,7 +168,7 @@ export default function InvestmentPropertyTipsPage() {
                   </p>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                    <Card className="border-l-4 border-l-green-500">
+                    <Card className=" border-l-green-500">
                       <CardHeader>
                         <CardTitle className="flex items-center text-green-600">
                           <CheckCircle className="w-5 h-5 mr-2" />
@@ -191,7 +191,7 @@ export default function InvestmentPropertyTipsPage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="border-l-4 border-l-blue-500">
+                    <Card className=" border-l-blue-500">
                       <CardHeader>
                         <CardTitle className="flex items-center text-blue-600">
                           <Target className="w-5 h-5 mr-2" />
@@ -435,7 +435,7 @@ export default function InvestmentPropertyTipsPage() {
                   </p>
 
                   <div className="space-y-6">
-                    <Card className="border-l-4 border-l-purple-500">
+                    <Card className=" border-l-purple-500">
                       <CardHeader>
                         <CardTitle>50% CGT Discount</CardTitle>
                         <CardDescription>

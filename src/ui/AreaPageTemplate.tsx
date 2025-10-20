@@ -107,7 +107,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 size="lg"
-                className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+                className="bg-blue-600 text-white hover:bg-blue-700 px-8 cursor-pointer"
                 onClick={() => scrollToSection("contact")}
               >
                 Get {areaData.name} Home Loan Quote
@@ -116,7 +116,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white hover:bg-white hover:text-gray-900 px-8 font-semibold"
+                className="border-white hover:bg-white hover:text-gray-900 px-8 font-semibold cursor-pointer"
               >
                 <Phone className="mr-2 w-5 h-5" />
                 {areaData.phone}
@@ -193,17 +193,40 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
                   <CardContent>
                     <Button
                       variant="outline"
-                      className="w-full"
+                      className="w-full cursor-pointer"
                       onClick={() => {
                         const serviceLinks: Record<string, string> = {
-                          "First Home Buyer Assistance": "/services/home-loans",
-                          "Investment Property Loans": "/services/home-loans",
+                          "First Home Buyer Assistance":
+                            "/services/first-home-buyers",
+                          "First Home Buyer Melbourne":
+                            "/services/first-home-buyers",
+                          "Perth First Home Buyers":
+                            "/services/first-home-buyers",
+                          "Adelaide First Home Buyers":
+                            "/services/first-home-buyers",
+                          "Parramatta First Home Buyers":
+                            "/services/first-home-buyers",
+                          "Investment Property Loans":
+                            "/services/property-investment",
+                          "Melbourne Investment Loans":
+                            "/services/property-investment",
+                          "Perth Investment Properties":
+                            "/services/property-investment",
+                          "Adelaide Investment Loans":
+                            "/services/property-investment",
+                          "Parramatta Investment Properties":
+                            "/services/property-investment",
                           "Commercial Property Finance":
-                            "/services/commercial-finance",
-                          "Refinancing Solutions": "/services/home-loans",
-                          "Personal Finance": "/services/personal-finance",
-                          "Car Loans": "/services/personal-finance",
-                          "Equipment Finance": "/services/commercial-finance",
+                            "/services/construction-loans",
+                          "Parramatta Commercial Finance":
+                            "/services/construction-loans",
+                          "Refinancing Solutions": "/services/refinancing",
+                          "Melbourne Refinancing": "/services/refinancing",
+                          "Perth Refinancing": "/services/refinancing",
+                          "Adelaide Refinancing": "/services/refinancing",
+                          "Parramatta Refinancing": "/services/refinancing",
+                          "Personal Finance": "/services/debt-consolidation",
+                          "Equipment Finance": "/services/construction-loans",
                         };
                         const targetPage = serviceLinks[service.title];
                         if (targetPage) {
@@ -292,6 +315,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             </p>
             <Button
               variant="outline"
+              className="cursor-pointer"
               onClick={() => scrollToSection("contact")}
             >
               Contact Us About Your Area
@@ -363,7 +387,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-blue-600 text-white hover:bg-blue-700 px-8"
+              className="bg-blue-600 text-white hover:bg-blue-700 px-8 cursor-pointer"
               onClick={() => scrollToSection("contact")}
             >
               Get Your Free Quote Today
@@ -372,7 +396,7 @@ export default function AreaPageTemplate({ areaId }: AreaPageProps) {
             <Button
               size="lg"
               variant="outline"
-              className="border-white hover:bg-white/10 px-8"
+              className="border-white hover:bg-white/10 px-8 cursor-pointer"
             >
               <Phone className="mr-2 w-5 h-5" />
               {areaData.phone}

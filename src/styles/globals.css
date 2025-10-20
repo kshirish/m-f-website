@@ -93,6 +93,7 @@
       "Liberation Mono", "Courier New", monospace;
     --color-orange-50: oklch(0.98 0.016 73.684);
     --color-orange-600: oklch(0.646 0.222 41.116);
+    --color-amber-600: oklch(0.709 0.167 68.415);
     --color-yellow-300: oklch(0.905 0.182 98.111);
     --color-green-50: oklch(0.982 0.018 155.826);
     --color-green-100: oklch(0.962 0.044 156.743);
@@ -100,7 +101,9 @@
     --color-green-600: oklch(0.627 0.194 149.214);
     --color-green-700: oklch(0.527 0.154 150.069);
     --color-green-800: oklch(0.448 0.119 151.328);
+    --color-emerald-600: oklch(0.596 0.162 165.471);
     --color-teal-600: oklch(0.589 0.172 180.735);
+    --color-cyan-600: oklch(0.681 0.139 194.769);
     --color-blue-50: oklch(0.97 0.014 254.604);
     --color-blue-100: oklch(0.932 0.032 255.585);
     --color-blue-200: oklch(0.882 0.059 254.128);
@@ -110,6 +113,8 @@
     --color-blue-700: oklch(0.488 0.243 264.376);
     --color-blue-800: oklch(0.424 0.199 265.638);
     --color-blue-900: oklch(0.379 0.146 265.522);
+    --color-indigo-500: oklch(0.578 0.227 277.366);
+    --color-indigo-600: oklch(0.502 0.211 277.366);
     --color-indigo-800: oklch(0.398 0.195 277.366);
     --color-purple-50: oklch(0.977 0.014 308.299);
     --color-purple-100: oklch(0.946 0.033 307.174);
@@ -121,6 +126,7 @@
     --color-purple-700: oklch(0.496 0.265 301.924);
     --color-purple-800: oklch(0.438 0.218 303.724);
     --color-purple-900: oklch(0.381 0.176 304.987);
+    --color-red-600: oklch(0.548 0.227 27.33);
     --color-pink-50: oklch(0.971 0.014 343.198);
     --color-pink-600: oklch(0.592 0.249 0.584);
     --color-pink-800: oklch(0.459 0.187 3.815);
@@ -2341,6 +2347,26 @@
     );
   }
 
+  .from-emerald-600 {
+    --tw-gradient-from: var(--color-emerald-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+
+  .from-teal-600 {
+    --tw-gradient-from: var(--color-teal-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+
   .from-indigo-500 {
     --tw-gradient-from: var(--color-indigo-500);
     --tw-gradient-stops: var(
@@ -2373,6 +2399,16 @@
 
   .from-orange-600 {
     --tw-gradient-from: var(--color-orange-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+
+  .from-amber-600 {
+    --tw-gradient-from: var(--color-amber-600);
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -2613,6 +2649,26 @@
 
   .to-teal-600 {
     --tw-gradient-to: var(--color-teal-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+
+  .to-cyan-600 {
+    --tw-gradient-to: var(--color-cyan-600);
+    --tw-gradient-stops: var(
+      --tw-gradient-via-stops,
+      var(--tw-gradient-position),
+      var(--tw-gradient-from) var(--tw-gradient-from-position),
+      var(--tw-gradient-to) var(--tw-gradient-to-position)
+    );
+  }
+
+  .to-orange-600 {
+    --tw-gradient-to: var(--color-orange-600);
     --tw-gradient-stops: var(
       --tw-gradient-via-stops,
       var(--tw-gradient-position),
@@ -6019,6 +6075,17 @@
   --font-weight-medium: 500;
   --font-weight-normal: 400;
   --ring: oklch(0.708 0 0);
+
+  /* Missing Font Variables */
+  --font-dm-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans--font-feature-settings: normal;
+  --font-sans--font-variation-settings: normal;
+  --font-mono--font-feature-settings: normal;
+  --font-mono--font-variation-settings: normal;
+
+  /* Missing Font Feature Settings */
+  --default-font-variation-settings: normal;
+  --default-mono-font-feature-settings: normal;
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);

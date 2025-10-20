@@ -244,7 +244,7 @@ export default function FirstHomeBuyerGuidePage() {
                     requirements in 2024:
                   </p>
 
-                  <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 mb-6">
+                  <div className="bg-yellow-50  border-yellow-400 p-6 mb-6">
                     <div className="flex items-start">
                       <AlertCircle className="w-6 h-6 text-yellow-600 mr-3 mt-1" />
                       <div>
@@ -324,7 +324,7 @@ export default function FirstHomeBuyerGuidePage() {
                   </p>
 
                   <div className="space-y-6">
-                    <Card className="border-l-4 border-l-blue-500">
+                    <Card className=" border-l-blue-500">
                       <CardHeader>
                         <CardTitle>
                           First Home Loan Deposit Scheme (FHLDS)
@@ -351,7 +351,7 @@ export default function FirstHomeBuyerGuidePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="border-l-4 border-l-green-500">
+                    <Card className=" border-l-green-500">
                       <CardHeader>
                         <CardTitle>First Home Owner Grant (FHOG)</CardTitle>
                         <CardDescription>

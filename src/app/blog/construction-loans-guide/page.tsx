@@ -83,7 +83,7 @@ export default function ConstructionLoansGuidePage() {
                   className="w-full h-64 object-cover rounded-xl shadow-lg mb-8"
                 />
 
-                <div className="bg-gradient-to-r from-orange-50 to-red-50 border-l-4 border-orange-500 p-6 rounded-r-lg mb-8">
+                <div className="bg-gradient-to-r from-orange-50 to-red-50  border-orange-500 p-6 rounded-r-lg mb-8">
                   <p className="text-xl text-gray-700 mb-0 leading-relaxed">
                     Building your dream home is an exciting journey, but it
                     requires careful financial planning. Construction loans

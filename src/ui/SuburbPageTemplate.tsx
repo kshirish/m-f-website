@@ -249,16 +249,30 @@ export default function SuburbPageTemplate({
                   title.toLowerCase().includes("first home buyer") ||
                   title.toLowerCase().includes("home loan")
                 ) {
-                  return "/services/home-loans";
+                  return "/services/first-home-buyers";
                 } else if (
                   title.toLowerCase().includes("investment") ||
-                  title.toLowerCase().includes("property")
+                  title.toLowerCase().includes("property investment")
                 ) {
-                  return "/services/commercial-finance";
+                  return "/services/property-investment";
                 } else if (title.toLowerCase().includes("refinanc")) {
-                  return "/services/personal-finance";
+                  return "/services/refinancing";
+                } else if (title.toLowerCase().includes("construction")) {
+                  return "/services/construction-loans";
+                } else if (
+                  title.toLowerCase().includes("valuation") ||
+                  title.toLowerCase().includes("smsf")
+                ) {
+                  return "/services/smsf";
+                } else if (
+                  title.toLowerCase().includes("debt") ||
+                  title.toLowerCase().includes("consolidation")
+                ) {
+                  return "/services/debt-consolidation";
+                } else if (title.toLowerCase().includes("low doc")) {
+                  return "/services/low-doc-loans";
                 } else {
-                  return "/services/home-loans"; // Default fallback
+                  return "/services/first-home-buyers"; // Default fallback to most common service
                 }
               };
 

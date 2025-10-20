@@ -77,12 +77,6 @@ export default function DebtConsolidationPage() {
       newRate: "From 6.25%*",
       savings: "Massive interest reduction",
     },
-    {
-      name: "Car Loans",
-      currentRate: "8.99%+",
-      newRate: "From 6.25%*",
-      savings: "Lower rate potential",
-    },
   ];
 
   return (
@@ -245,10 +239,6 @@ export default function DebtConsolidationPage() {
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
                       <span>Store cards and finance</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />
-                      <span>Car loans</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-green-600 mr-3 flex-shrink-0 mt-0.5" />

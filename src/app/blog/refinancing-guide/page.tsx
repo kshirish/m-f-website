@@ -292,7 +292,7 @@ export default function RefinancingGuidePage() {
                   </p>
 
                   <div className="space-y-6">
-                    <Card className="border-l-4 border-l-green-500">
+                    <Card className=" border-l-green-500">
                       <CardHeader>
                         <CardTitle className="text-green-600">
                           Rate Differential
@@ -329,7 +329,7 @@ export default function RefinancingGuidePage() {
                       </CardContent>
                     </Card>
 
-                    <Card className="border-l-4 border-l-blue-500">
+                    <Card className=" border-l-blue-500">
                       <CardHeader>
                         <CardTitle className="text-blue-600">
                           Market Conditions
